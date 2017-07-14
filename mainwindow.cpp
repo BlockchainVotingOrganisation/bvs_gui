@@ -73,7 +73,13 @@ MainWindow::MainWindow(QWidget *parent) :
     console->setEnabled(false);
 
     setCentralWidget(console);
-
+    QProcess * process = new QProcess;
+    process->start("multichaind BVS_R2@blockchain-voting.org:6733");
+    process->waitForFinished();
+    QByteArray out = process->readAllStandardOutput();
+    console->putData(out);
+    console->setEnabled(true);
+    console->setReadOnly(false);
 
 //! [1]
 //    serial = new QSerialPort(this);
@@ -112,13 +118,7 @@ MainWindow::~MainWindow()
 void MainWindow::openSerialPort()
 {
     SettingsDialog::Settings p = settings->settings();
-    QProcess * process = new QProcess;
-    process->start("multichaind BVS_R2@blockchain-voting.org:6733");
-    process->waitForFinished();
-    QByteArray out = process->readAllStandardOutput();
-    console->putData(out);
-    console->setEnabled(true);
-    console->setReadOnly(false);
+
 //    serial->setPortName(p.name);
 //    serial->setBaudRate(p.baudRate);
 //    serial->setDataBits(p.dataBits);

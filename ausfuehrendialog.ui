@@ -2,8 +2,8 @@
  <author/>
  <comment/>
  <exportmacro/>
- <class>DialogWahlen</class>
- <widget class="QDialog" name="DialogWahlen">
+ <class>AusfuehrenDialog</class>
+ <widget name="AusfuehrenDialog" class="QDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -15,7 +15,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QDialogButtonBox" name="buttonBox">
+  <widget name="buttonBox" class="QDialogButtonBox">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -38,7 +38,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>DialogWahlen</receiver>
+   <receiver>AusfuehrenDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -54,7 +54,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>DialogWahlen</receiver>
+   <receiver>AusfuehrenDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
