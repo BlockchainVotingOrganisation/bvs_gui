@@ -56,7 +56,7 @@
 
 #include <QMainWindow>
 
-#include <QtSerialPort/QSerialPort>
+//#include <QtSerialPort/QSerialPort>
 
 QT_BEGIN_NAMESPACE
 
@@ -79,14 +79,17 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+
 private slots:
-    void openSerialPort();
+    void blockchainInfo();
     void closeSerialPort();
     void about();
     void writeData(const QByteArray &data);
     void readData();
 
     void handleError(QSerialPort::SerialPortError error);
+
+
 
 private:
     void initActionsConnections();

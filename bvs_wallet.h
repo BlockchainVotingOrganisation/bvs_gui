@@ -13,6 +13,7 @@ namespace Ui {
 
 class AusfuehrenDialog;
 
+
 class BVS_Wallet : public QMainWindow
 {
   Q_OBJECT
@@ -24,9 +25,12 @@ public:
 private slots:
   void on_action_Ausf_hren_triggered();
 //  QDialog ausfuehrendialog; //<--------- Pointer auf QDialog
+  void on_actionWahl_ffnen_triggered();
+
 private:
   Ui::BVS_Wallet *ui;
   QDialog * ausfuehrendialog; //<--------- Pointer auf QDialog
+
 };
 
 #endif // BVS_WALLET_H

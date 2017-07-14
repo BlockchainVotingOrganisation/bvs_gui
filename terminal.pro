@@ -1,28 +1,23 @@
-QT += widgets serialport
+QT += widgets
 
 TARGET = bvs
 TEMPLATE = app
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp \
-    settingsdialog.cpp \
-    console.cpp \
     bvs_wallet.cpp \
-    ausfuehrendialog.cpp
+    ausfuehrendialog.cpp \
+    projekteauswahl.cpp
 
 HEADERS += \
-    mainwindow.h \
-    settingsdialog.h \
-    console.h \
     bvs_wallet.h \
-    ausfuehrendialog.h
+    ausfuehrendialog.h \
+    projekteauswahl.h
 
 FORMS += \
-    mainwindow.ui \
-    settingsdialog.ui \
     bvs_wallet.ui \
-    ausfuehrendialog.ui
+    ausfuehrendialog.ui \
+    projekteauswahl.ui
 
 RESOURCES += \
     terminal.qrc

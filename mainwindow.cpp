@@ -70,16 +70,16 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     console = new Console;
-    console->setEnabled(false);
+    console->setEnabled(true);
 
     setCentralWidget(console);
+
+//  ToDo: Prüfen ob Daemon schon existiert!!!
     QProcess * process = new QProcess;
     process->start("multichaind BVS_R2@blockchain-voting.org:6733");
     process->waitForFinished();
     QByteArray out = process->readAllStandardOutput();
     console->putData(out);
-    console->setEnabled(true);
-    console->setReadOnly(false);
 
 //! [1]
 //    serial = new QSerialPort(this);
@@ -87,7 +87,7 @@ MainWindow::MainWindow(QWidget *parent) :
     settings = new SettingsDialog;
 
     ui->actionConnect->setEnabled(true);
-    ui->actionDisconnect->setEnabled(false);
+    ui->actionDisconnect->setEnabled(true);
     ui->actionQuit->setEnabled(true);
     ui->actionConfigure->setEnabled(true);
 
@@ -109,15 +109,25 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-
+    QProcess * process = new QProcess;
+    process->start("multichain-cli BVS_R2 stop");
+    process->waitForFinished();
     delete settings;
     delete ui;
 }
 
 //! [4]
-void MainWindow::openSerialPort()
+void MainWindow::blockchainInfo()
 {
-    SettingsDialog::Settings p = settings->settings();
+    QProcess * process = new QProcess;
+//    SettingsDialog::Settings p = settings->settings();
+    process->start("multichaind BVS_R2@blockchain-voting.org:6733");
+    process->waitForFinished();
+    process->start("multichain-cli BVS_R2 getinfo");
+    process->waitForFinished();
+    QByteArray out = process->readAllStandardOutput();
+
+    console->appendPlainText(out);
 
 //    serial->setPortName(p.name);
 //    serial->setBaudRate(p.baudRate);
@@ -145,12 +155,16 @@ void MainWindow::openSerialPort()
 //! [5]
 void MainWindow::closeSerialPort()
 {
-    if (serial->isOpen())
-        serial->close();
-    console->setEnabled(false);
-    ui->actionConnect->setEnabled(true);
-    ui->actionDisconnect->setEnabled(false);
-    ui->actionConfigure->setEnabled(true);
+  QProcess * process = new QProcess;
+  process->start("multichain-cli BVS_R2 stop");
+  process->waitForFinished();
+
+//    if (serial->isOpen())
+//        serial->close();
+//    console->setEnabled(false);
+//    ui->actionConnect->setEnabled(true);
+//    ui->actionDisconnect->setEnabled(false);
+//    ui->actionConfigure->setEnabled(true);
     showStatusMessage(tr("Disconnected"));
 }
 //! [5]
@@ -190,7 +204,7 @@ void MainWindow::handleError(QSerialPort::SerialPortError error)
 
 void MainWindow::initActionsConnections()
 {
-    connect(ui->actionConnect, &QAction::triggered, this, &MainWindow::openSerialPort);
+    connect(ui->actionConnect, &QAction::triggered, this, &MainWindow::blockchainInfo);
     connect(ui->actionDisconnect, &QAction::triggered, this, &MainWindow::closeSerialPort);
     connect(ui->actionQuit, &QAction::triggered, this, &MainWindow::close);
     connect(ui->actionConfigure, &QAction::triggered, settings, &SettingsDialog::show);
@@ -203,3 +217,5 @@ void MainWindow::showStatusMessage(const QString &message)
 {
     status->setText(message);
 }
+
+

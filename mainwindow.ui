@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Simple Terminal</string>
+   <string>BVS Terminal</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="enabled">
