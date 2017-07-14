@@ -28,7 +28,5 @@ void AusfuehrenDialog::on_pushButton_clicked()
     process->waitForFinished();
     out.append(process->readAllStandardOutput());
     ui->plainTextEdit->appendPlainText(out);
-//    QJsonDocument *itemdoc ;
-//    itemdoc->fromJson(out);
-//    qDebug() << itemdoc;
+
 }
