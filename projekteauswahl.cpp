@@ -4,6 +4,8 @@
 #include <QJsonObject>
 #include <QProcess>
 #include <qdebug.h>
+#include <QJsonArray>
+
 
 ProjekteAuswahl::ProjekteAuswahl(QWidget *parent) :
   QDialog(parent),
@@ -12,27 +14,25 @@ ProjekteAuswahl::ProjekteAuswahl(QWidget *parent) :
     ui->setupUi(this);
 
     QProcess * process = new QProcess;
-    QByteArray out;// = process->readAllStandardOutput();
+    QByteArray stdOut;// = process->readAllStandardOutput();
     process = new QProcess;
     process->start("multichain-cli BVS_R2 liststreams");
     process->waitForFinished();
-    out.append(process->readAllStandardOutput());
+    stdOut.append(process->readAllStandardOutput());
 
-    qDebug() <<"Raw input:\n" << out << "\n";
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(stdOut);
 
-    QJsonDocument mDocument = QJsonDocument::fromJson(out);
-
-    if (!mDocument.isNull())
+    if (!jsonDocument.isNull())
     {
-        qDebug() << "Is array? " << mDocument.isArray();
-
-        qDebug() << "Is object?" << mDocument.isObject();
-        if (mDocument.isObject()) {
-            QJsonObject jsonObject ;
-            jsonObject = mDocument.object();
-            qDebug() << "Object empty?:" << jsonObject.isEmpty();
+        if (jsonDocument.isArray()) {
+            jsonDocument = QJsonDocument::fromJson(stdOut);
+            QJsonArray jsonArray = jsonDocument.array();
+            QJsonObject streams[jsonArray.size()];
+            for (int i = 0; i < jsonArray.size(); i++) {
+              streams[i] = jsonArray[i].toObject();
+              ui->listWidget->addItem(streams[i].value("name").toString());
+            }
         }
-
     }
 }
 
