@@ -18,8 +18,11 @@ public:
   ~ProjekteAuswahl();
 
 
-public slots:
+private slots:
     QString on_projectListe_itemSelectionChanged();
+
+public slots:
+    QString getProject();
 
 private:
   Ui::ProjekteAuswahl *ui;

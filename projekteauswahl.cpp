@@ -41,6 +41,17 @@ ProjekteAuswahl::~ProjekteAuswahl()
   delete ui;
 }
 
+// Getter und Setter für Projektliste
+
+/*
+ * get selected project:  * return ui->projectListe->selectedItems().at(0)->text();
+ *
+ */
+
+QString ProjekteAuswahl::getProject() {
+    return ui->projectListe->selectedItems().at(0)->text();
+}
+
 QString ProjekteAuswahl::on_projectListe_itemSelectionChanged()
 {
     qDebug() << ui->projectListe->selectedItems().at(0)->text();
