@@ -36,8 +36,14 @@ void BVS_Wallet::on_actionWahl_ffnen_triggered()
     ProjekteAuswahl *p = new ProjekteAuswahl;
 
    // connect to p projectliste selected item text in dialog window projectauswahl connect(p,
-//    connect(p, p->on_projectListe_itemSelectionChanged(), this, );
+
+//    connect(p, SIGNAL(p->getProject()), this, ui->label->setText(project));
     p->show();
+
+    if (p->exec()==QDialog::Accepted) {
+        QString project = p->getProject();
+        ui->label->setText(project);
+    }
 
 
 }
