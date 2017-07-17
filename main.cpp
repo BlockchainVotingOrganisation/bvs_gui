@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 //    MainWindow w;
 //    w.show();
-
+    QString project = "Kein Project";//Fill this from your dialog.
     BVS_Wallet b;
     b.show();
 

@@ -17,6 +17,10 @@ public:
   explicit ProjekteAuswahl(QWidget *parent = 0);
   ~ProjekteAuswahl();
 
+
+public slots:
+    QString on_projectListe_itemSelectionChanged();
+
 private:
   Ui::ProjekteAuswahl *ui;
 };

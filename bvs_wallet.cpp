@@ -33,8 +33,11 @@ void BVS_Wallet::on_action_Ausf_hren_triggered()
 
 void BVS_Wallet::on_actionWahl_ffnen_triggered()
 {
-   ProjekteAuswahl *p = new ProjekteAuswahl;
-   p->show();
+    ProjekteAuswahl *p = new ProjekteAuswahl;
+
+   // connect to p projectliste selected item text in dialog window projectauswahl connect(p,
+//    connect(p, p->on_projectListe_itemSelectionChanged(), this, );
+    p->show();
 
 
 }

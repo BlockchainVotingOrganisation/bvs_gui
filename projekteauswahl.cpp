@@ -30,7 +30,7 @@ ProjekteAuswahl::ProjekteAuswahl(QWidget *parent) :
             QJsonObject streams[jsonArray.size()];
             for (int i = 0; i < jsonArray.size(); i++) {
               streams[i] = jsonArray[i].toObject();
-              ui->listWidget->addItem(streams[i].value("name").toString());
+              ui->projectListe->addItem(streams[i].value("name").toString());
             }
         }
     }
@@ -40,3 +40,12 @@ ProjekteAuswahl::~ProjekteAuswahl()
 {
   delete ui;
 }
+
+QString ProjekteAuswahl::on_projectListe_itemSelectionChanged()
+{
+    qDebug() << ui->projectListe->selectedItems().at(0)->text();
+    return ui->projectListe->selectedItems().at(0)->text();
+}
+
+
+
