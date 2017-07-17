@@ -25,25 +25,15 @@ void BVS_Wallet::on_action_Ausf_hren_triggered()
 {
   AusfuehrenDialog *a = new AusfuehrenDialog;
   a->show();
-
-
-//  a.setVisible(true);
-//  connect (Form.pushButton, SIGNAL(clicked()),ausfuehrendialog,SLOT(close()));
 }
 
 void BVS_Wallet::on_actionWahl_ffnen_triggered()
 {
     ProjekteAuswahl *p = new ProjekteAuswahl;
-
-   // connect to p projectliste selected item text in dialog window projectauswahl connect(p,
-
-//    connect(p, SIGNAL(p->getProject()), this, ui->label->setText(project));
     p->show();
 
     if (p->exec()==QDialog::Accepted) {
         QString project = p->getProject();
         ui->label->setText(project);
     }
-
-
 }
