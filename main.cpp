@@ -53,13 +53,16 @@
 #include <QProcess>
 //#include "mainwindow.h"
 #include "bvs_wallet.h"
-
+#include <QDebug>
 int main(int argc, char *argv[])
 {
 
     QApplication a(argc, argv);
-//    MainWindow w;
-//    w.show();
+
+    QProcess * process = new QProcess;
+    qDebug() << "Starte BVS-Service";
+    process->start("multichaind BVS_R2@blockchain-voting.org:6733");
+    process->waitForFinished();
     QString project = "Kein Project";//Fill this from your dialog.
     BVS_Wallet b;
     b.show();

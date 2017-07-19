@@ -37,3 +37,8 @@ void BVS_Wallet::on_actionWahl_ffnen_triggered()
         ui->label->setText(project);
     }
 }
+
+void BVS_Wallet::on_action_Beenden_triggered()
+{
+    exit(0);
+}
