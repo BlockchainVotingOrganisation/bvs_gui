@@ -8,13 +8,15 @@ SOURCES += \
     bvs_wallet.cpp \
     ausfuehrendialog.cpp \
     projekteauswahl.cpp \
-    Classes/Domain/Model/project.cpp
+    Classes/Domain/Model/project.cpp \
+    Classes/Domain/projectcontroller.cpp
 
 HEADERS += \
     bvs_wallet.h \
     ausfuehrendialog.h \
     projekteauswahl.h \
-    Classes/Domain/Model/project.h
+    Classes/Domain/Model/project.h \
+    Classes/Domain/projectcontroller.h
 
 FORMS += \
     bvs_wallet.ui \
