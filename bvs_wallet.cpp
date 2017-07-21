@@ -12,13 +12,10 @@ BVS_Wallet::BVS_Wallet(QWidget *parent) :
 
 }
 
-
-
 BVS_Wallet::~BVS_Wallet()
 {
   delete ui;
 }
-
 
 
 void BVS_Wallet::on_action_Ausf_hren_triggered()

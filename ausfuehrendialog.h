@@ -7,9 +7,6 @@ namespace Ui {
   class AusfuehrenDialog;
 }
 
-
-
-
 class AusfuehrenDialog : public QDialog
 {
   Q_OBJECT
