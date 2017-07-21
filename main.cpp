@@ -54,16 +54,48 @@
 //#include "mainwindow.h"
 #include "bvs_wallet.h"
 #include <QDebug>
+
+
 int main(int argc, char *argv[])
 {
 
     QApplication a(argc, argv);
 
     QProcess * process = new QProcess;
-    qDebug() << "Starte BVS-Service";
-    process->start("multichaind BVS_R2@blockchain-voting.org:6733");
-    process->waitForFinished();
-    QString project = "Kein Project";//Fill this from your dialog.
+    QString cmd = "multichaind BVS_R2@blockachin-voting.org:6733";
+    bool daemon = false;
+
+    qDebug() << "Starte BVS-Service... Please be patient while daemon starts!";
+
+    qDebug() << "argc = " << argc;
+    for(int i = 0; i < argc; i++) {
+        qDebug() << "argv[" << i << "] = " << argv[i];
+        QString arg = argv[i];
+        if (arg == "--with-multichain") {
+            daemon = true;
+            // cmdArray[0] = "multichaind ";
+        }
+        else if (arg.contains("blockchain") == true) {
+            // cmdArray[1] += split("=") [1]
+        }
+        else if (arg.contains("server") == true) {
+            // cmdArray[2] =split("=") [1]
+        }
+
+        else if (arg.contains("port") == true) {
+            // cmdArray[3] = split("=") [1]
+        }
+
+        //cmdArray[4] = " -daemon";
+        cmd += " -daemon";
+    }
+
+    if (daemon == true) {
+        process->start(cmd);
+        process->waitForFinished();
+        qDebug() << "Getting data from blockchain...";
+    }
+
     BVS_Wallet b;
     b.show();
 

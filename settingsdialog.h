@@ -1,11 +1,8 @@
 #ifndef SETTINGSDIALOG_H
 #define SETTINGSDIALOG_H
 
-#if QT_VERSION >= 0x050000
+
 #include <QtWidgets/QDialog>
-#else
-#include <QtGui/QDialog>
-#endif
 
 namespace Ui {
 class SettingsDialog;
@@ -18,6 +15,11 @@ class SettingsDialog : public QDialog
 public:
     explicit SettingsDialog(QWidget *parent = 0);
     ~SettingsDialog();
+
+private slots:
+    void on_pushButton_clicked();
+
+    void on_buttonBox_accepted();
 
 private:
     Ui::SettingsDialog *ui;

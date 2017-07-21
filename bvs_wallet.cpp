@@ -2,13 +2,16 @@
 #include "ui_bvs_wallet.h"
 #include "ausfuehrendialog.h"
 #include "projekteauswahl.h"
-//#include "mainwindow.h"
+#include "settingsdialog.h"
+
 
 BVS_Wallet::BVS_Wallet(QWidget *parent) :
   QMainWindow(parent),
   ui(new Ui::BVS_Wallet)
 {
   ui->setupUi(this);
+
+//  setCentralWidget(ui->listWidget);
 
 }
 
@@ -58,5 +61,6 @@ void BVS_Wallet::on_actionAuswaehlen_triggered()
 
 void BVS_Wallet::on_actionEinstellungen_triggered()
 {
-
+    SettingsDialog *settings = new SettingsDialog;
+    settings->show();
 }

@@ -1,5 +1,6 @@
 QT += widgets
 
+
 TARGET = bvs
 TEMPLATE = app
 
@@ -11,7 +12,8 @@ SOURCES += \
     Classes/Domain/Model/project.cpp \
     Classes/Domain/projectRepository.cpp \
     Classes/Controller/projectcontroller.cpp \
-    settingsdialog.cpp
+    settingsdialog.cpp \
+    Classes/Domain/Model/node.cpp
 
 HEADERS += \
     bvs_wallet.h \
@@ -20,7 +22,8 @@ HEADERS += \
     Classes/Domain/Model/project.h \
     Classes/Domain/projectRepository.h \
     Classes/Controller/projectController.h \
-    settingsdialog.h
+    settingsdialog.h \
+    Classes/Domain/Model/node.h
 
 FORMS += \
     bvs_wallet.ui \
