@@ -1,16 +1,16 @@
-#ifndef PROJECTCONTROLLER_H
-#define PROJECTCONTROLLER_H
+#ifndef PROJECTREPOSITORY_H
+#define PROJECTREPOSITORY_H
 
 #include <QtCore/qglobal.h>
 #include <QtCore/QtGlobal>
 #include <QStringList>
 
-class ProjectController
+class ProjectRepository
 {
 
 
 public:
-    explicit ProjectController();
+    explicit ProjectRepository();
     QStringList getProjects();
 
 private:
@@ -18,4 +18,4 @@ private:
 
 };
 
-#endif // PROJECTCONTROLLER_H
+#endif // PROJECTREPOSITORY_H

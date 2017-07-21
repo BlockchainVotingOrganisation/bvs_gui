@@ -1,22 +1,24 @@
-#include "projectcontroller.h"
+#include "projectRepository.h"
 #include <QJsonDocument>
 #include <QProcess>
 #include <QJsonArray>
 #include <QJsonObject>
+#include <QDebug>
 
 using namespace std;
 
-ProjectController::ProjectController()
+ProjectRepository::ProjectRepository()
 {
     list<string> projects;
 }
 
-QStringList ProjectController::getProjects() {
+QStringList ProjectRepository::getProjects() {
     QProcess * process = new QProcess;
     QByteArray stdOut;// = process->readAllStandardOutput();
-    process = new QProcess;
+//    process = new QProcess;
     process->start("multichain-cli BVS_R2 liststreams");
     process->waitForFinished();
+    stdOut.append(process->readAllStandardOutput());
 
     QJsonDocument jsonDocument = QJsonDocument::fromJson(stdOut);
     QStringList projectList;
@@ -33,5 +35,12 @@ QStringList ProjectController::getProjects() {
             }
             return projectList;
         }
+        else {
+            qDebug() << "JSON is not an array!";
+        }
     }
+    else {
+        qDebug() << "JSON is null!";
+    }
+
 }

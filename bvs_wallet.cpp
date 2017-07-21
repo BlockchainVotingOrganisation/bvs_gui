@@ -39,3 +39,14 @@ void BVS_Wallet::on_action_Beenden_triggered()
 {
     exit(0);
 }
+
+void BVS_Wallet::on_actionAuswaehlen_triggered()
+{
+    ProjekteAuswahl *p = new ProjekteAuswahl;
+    p->show();
+
+    if (p->exec()==QDialog::Accepted) {
+        QString project = p->getProject();
+        ui->label->setText(project);
+    }
+}

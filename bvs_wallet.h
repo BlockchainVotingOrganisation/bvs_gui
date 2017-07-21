@@ -29,6 +29,8 @@ private slots:
 
   void on_action_Beenden_triggered();
 
+  void on_actionAuswaehlen_triggered();
+
 private:
   Ui::BVS_Wallet *ui;
   QDialog * ausfuehrendialog; //<--------- Pointer auf QDialog
