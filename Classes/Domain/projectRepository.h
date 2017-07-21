@@ -11,10 +11,12 @@ class ProjectRepository
 
 public:
     explicit ProjectRepository();
-    QStringList getProjects();
+    QStringList findAllProjects();
+    QStringList findAllItems(QString project);
 
 private:
     QStringList projects;
+    QStringList items;
 
 };
 

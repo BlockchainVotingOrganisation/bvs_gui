@@ -6,6 +6,7 @@
 
 #include <QMainWindow>
 #include "ausfuehrendialog.h"
+#include "Classes/Domain/projectRepository.h"
 
 namespace Ui {
   class BVS_Wallet;
@@ -30,6 +31,8 @@ private slots:
   void on_action_Beenden_triggered();
 
   void on_actionAuswaehlen_triggered();
+
+  void on_actionEinstellungen_triggered();
 
 private:
   Ui::BVS_Wallet *ui;

@@ -15,8 +15,10 @@ ProjekteAuswahl::ProjekteAuswahl(QWidget *parent) :
     ui->setupUi(this);
     ProjectRepository *repository;
     QStringList projects;
-    projects = repository->getProjects();
-    ui->projectListe->insertItems(0, projects);
+    projects = repository->findAllProjects();
+    if (projects.length() > 0) {
+        ui->projectListe->insertItems(0, projects);
+    }
 }
 
 ProjekteAuswahl::~ProjekteAuswahl()
@@ -32,7 +34,10 @@ ProjekteAuswahl::~ProjekteAuswahl()
  */
 
 QString ProjekteAuswahl::getProject() {
-    return ui->projectListe->selectedItems().at(0)->text();
+    if (ui->projectListe->selectedItems().length() > 0) {
+        return ui->projectListe->selectedItems().at(0)->text();
+    }
+    else return "";
 }
 
 QString ProjekteAuswahl::on_projectListe_itemSelectionChanged()

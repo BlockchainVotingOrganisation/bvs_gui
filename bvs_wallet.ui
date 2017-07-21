@@ -10,8 +10,14 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="cursor">
+   <cursorShape>ArrowCursor</cursorShape>
+  </property>
   <property name="windowTitle">
    <string>BVS Client</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
@@ -32,13 +38,13 @@
      <string>Kein Projekt!</string>
     </property>
    </widget>
-   <widget class="QPlainTextEdit" name="plainTextEdit">
+   <widget class="QListWidget" name="listWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>140</y>
-      <width>761</width>
-      <height>161</height>
+      <x>30</x>
+      <y>50</y>
+      <width>731</width>
+      <height>451</height>
      </rect>
     </property>
    </widget>
@@ -105,6 +111,9 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
+   <property name="cursor">
+    <cursorShape>CrossCursor</cursorShape>
+   </property>
    <property name="windowTitle">
     <string>toolBar</string>
    </property>
@@ -114,7 +123,12 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="action_Connect"/>
+   <addaction name="actionDisconnect"/>
    <addaction name="actionAuswaehlen"/>
+   <addaction name="action_Stimmzettel"/>
+   <addaction name="separator"/>
+   <addaction name="actionAktualisieren"/>
   </widget>
   <action name="action_Beenden">
    <property name="text">
@@ -152,6 +166,26 @@
   <action name="actionNeu">
    <property name="text">
     <string>Neu</string>
+   </property>
+  </action>
+  <action name="actionAktualisieren">
+   <property name="text">
+    <string>Ansicht Aktualisieren</string>
+   </property>
+  </action>
+  <action name="action_Connect">
+   <property name="text">
+    <string>&amp;Connect</string>
+   </property>
+  </action>
+  <action name="actionDisconnect">
+   <property name="text">
+    <string>&amp;Disconnect</string>
+   </property>
+  </action>
+  <action name="action_Stimmzettel">
+   <property name="text">
+    <string>&amp;Stimmzettel</string>
    </property>
   </action>
  </widget>

@@ -31,7 +31,10 @@ void BVS_Wallet::on_actionWahl_ffnen_triggered()
 
     if (p->exec()==QDialog::Accepted) {
         QString project = p->getProject();
-        ui->label->setText(project);
+        if (project != "")
+        {
+            ui->label->setText(project);
+        }
     }
 }
 
@@ -45,8 +48,15 @@ void BVS_Wallet::on_actionAuswaehlen_triggered()
     ProjekteAuswahl *p = new ProjekteAuswahl;
     p->show();
 
+    ProjectRepository *repository;
+
     if (p->exec()==QDialog::Accepted) {
         QString project = p->getProject();
         ui->label->setText(project);
-    }
+        ui->listWidget->addItems(repository->findAllItems(project));    }
+}
+
+void BVS_Wallet::on_actionEinstellungen_triggered()
+{
+
 }
