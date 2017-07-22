@@ -7,5 +7,5 @@
 Required 
 - multichain, see https://github.com/multichain/multichain
 
-### install bvs_Gui
+### Install bvs_Gui
 
