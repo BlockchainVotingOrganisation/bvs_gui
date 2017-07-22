@@ -4,5 +4,5 @@
 
 ### Prerequisites
 
-Requires multichain, see http://www.multichain.com
+Requires multichain, see https://github.com/multichain/multichain
 
