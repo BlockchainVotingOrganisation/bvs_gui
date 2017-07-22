@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv); // ->this process
     QStringList args = app.arguments(); // ->console cmd args
     BVS_Wallet b(args); // ->GUI MainWindow
-    Node *node = new Node; // -> BC-Node multichain
+//    Node *node = new Node; // -> BC-Node multichain
 
     QProcess * process = new QProcess; // ->Multichain daemon process
     QString cmd, blockchain, server, port;
@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
             blockchain = argBlockchain[1];
 //            node->setBlockchain(blockchain);
 //            node->setBlockchain(blockchain);
-            qDebug() << "BC:" << blockchain;
+//            qDebug() << "BC:" << blockchain;
         }
         else if (arg.contains("server=") == true) {
 

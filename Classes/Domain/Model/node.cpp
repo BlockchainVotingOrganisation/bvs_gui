@@ -16,9 +16,9 @@ Node::Node()
  * @brief Node::setBlockchain
  * @param blockchain
  */
-//void Node::setBlockchain(QString blockchain) {
-//    this->chain = blockchain;
-//}
+void Node::setBlockchain(QString *blockchain) {
+    this->chain = blockchain;
+}
 
 ///**
 // * @brief Node::setServer

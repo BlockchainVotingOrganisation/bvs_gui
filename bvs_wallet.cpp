@@ -8,15 +8,23 @@
 #include "Classes/Controller/nodecontroller.h"
 
 
+/**
+ * @brief BVS_Wallet::BVS_Wallet
+ * @param args
+ * @param parent
+ */
 BVS_Wallet::BVS_Wallet(QStringList args, QWidget *parent) :
   QMainWindow(parent),
-  ui(new Ui::BVS_Wallet)
+  ui(new Ui::BVS_Wallet),
+  node(new Node)
 {
     ui->setupUi(this);
+    this->args = args;
 
 //    QString  arg[Args.length()];
 
     for(int i = 0; i < args.length(); i++) {
+//        ui->listWidget->addItem(args.at(i));
         if (args.at(i) == "-debug") {
             qDebug() << "\nArgs:" << args.length() << "";
             for(int j = 0; j < args.length(); j++) {
@@ -43,6 +51,7 @@ BVS_Wallet::~BVS_Wallet()
 void BVS_Wallet::on_action_Ausf_hren_triggered()
 {
   AusfuehrenDialog *a = new AusfuehrenDialog;
+
   a->show();
 }
 
@@ -102,8 +111,11 @@ void BVS_Wallet::on_actionEinstellungen_triggered()
  */
 void BVS_Wallet::closeEvent()
 {
+    for(int i = 0; i < this->args.length(); i++) {
+         qDebug() << this->args.at(i);
+    }
 //    qDebug() << "Anwendung beenden - Blockchain: ";
     NodeController nc;
-    int i = nc.stopDaemon();
+    int i = nc.stopDaemon(args);
     qDebug() << "Anwendung beenden Status:" << i;
 }

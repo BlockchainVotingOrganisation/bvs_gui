@@ -17,7 +17,7 @@ public:
     QString getPort();
 
 // Setters
-    void setBlockchain(QString &blockchain);
+    void setBlockchain(QString *blockchain);
     void setServer(QString *mysqever);
     void setPort(QString *myport);
     void setRpcUser(QString myuser);
