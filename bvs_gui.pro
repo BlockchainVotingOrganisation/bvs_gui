@@ -15,7 +15,8 @@ SOURCES += \
     settingsdialog.cpp \
     Classes/Domain/Model/node.cpp \
     Classes/Controller/nodecontroller.cpp \
-    Classes/Domain/Model/ballot.cpp
+    Classes/Domain/Model/ballot.cpp \
+    Ressources/Private/GUI/ballot.cpp
 
 HEADERS += \
     bvs_wallet.h \
@@ -27,13 +28,15 @@ HEADERS += \
     settingsdialog.h \
     Classes/Domain/Model/node.h \
     Classes/Controller/nodecontroller.h \
-    Classes/Domain/Model/ballot.h
+    Classes/Domain/Model/ballot.h \
+    Ressources/Private/GUI/ballot.h
 
 FORMS += \
     bvs_wallet.ui \
     ausfuehrendialog.ui \
     projekteauswahl.ui \
-    settingsdialog.ui
+    settingsdialog.ui \
+    Ressources/Private/GUI/ballot.ui
 
 RESOURCES += \
     terminal.qrc
