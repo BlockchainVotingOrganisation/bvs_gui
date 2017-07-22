@@ -8,12 +8,22 @@
 #include "Classes/Controller/nodecontroller.h"
 
 
-BVS_Wallet::BVS_Wallet(QWidget *parent) :
+BVS_Wallet::BVS_Wallet(QStringList args, QWidget *parent) :
   QMainWindow(parent),
   ui(new Ui::BVS_Wallet)
 {
-  ui->setupUi(this);
+    ui->setupUi(this);
 
+//    QString  arg[Args.length()];
+
+    for(int i = 0; i < args.length(); i++) {
+        if (args.at(i) == "-debug") {
+            qDebug() << "\nArgs:" << args.length() << "";
+            for(int j = 0; j < args.length(); j++) {
+                qDebug() << "args[" << j << "] = " << args.at(j) << "";
+            }
+        }
+    }
 }
 
 /**

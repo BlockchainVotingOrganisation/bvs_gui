@@ -21,8 +21,10 @@ class BVS_Wallet : public QMainWindow
   Q_OBJECT
 
 public:
-  explicit BVS_Wallet(QWidget *parent = 0);
+  explicit BVS_Wallet(QStringList srgs, QWidget *parent = 0);
   ~BVS_Wallet();
+
+  Node *node;
 
 private slots:
   void on_action_Ausf_hren_triggered();
@@ -47,6 +49,7 @@ public slots:
 
 private:
     Ui::BVS_Wallet *ui;
+
     QString *blockchain;
     QString *server;
     QString *port;
