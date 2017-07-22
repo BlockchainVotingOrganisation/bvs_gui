@@ -7,13 +7,13 @@ namespace Ui {
 class Ballot;
 }
 
-class BallotForm : public QDialog
+class Ballot : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit BallotForm(QWidget *parent = 0);
-    ~BallotForm();
+    explicit Ballot(QWidget *parent = 0);
+    ~Ballot();
 
 private:
     Ui::Ballot *ui;

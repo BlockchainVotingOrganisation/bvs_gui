@@ -11,6 +11,7 @@ class ProjectController
 public:
     ProjectController();
     QStringList listAction();
+
     Project showAction(QString project);
     Project newAction();
     Project createAction();
@@ -19,6 +20,7 @@ public:
 
 private:
     ProjectRepository *repository;
+    QStringList listBallotsAction(QString project);
 };
 
 #endif // PROJECTCONTROLLER_H

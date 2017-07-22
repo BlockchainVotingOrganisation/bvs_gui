@@ -2,15 +2,13 @@
 #define BALLOT_H
 
 #include <QtCore/qglobal.h>
+#include <QString>
 
-class BallotForm
+class Ballot
 {
 public:
-    BallotForm();
+    Ballot();
 
-    QStringList findAllBallots(QString project);
-    QStringList findAllOptions(QString ballot);
-    Ballot findByReference(QString project);
 
 private:
     QString *ballot;

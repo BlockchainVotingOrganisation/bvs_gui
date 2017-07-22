@@ -1,14 +1,14 @@
 #include "ballotForm.h"
 #include "ui_ballot.h"
 
-BallotForm::BallotForm(QWidget *parent) :
+Ballot::Ballot(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Ballot)
 {
     ui->setupUi(this);
 }
 
-BallotForm::~BallotForm()
+Ballot::~Ballot()
 {
     delete ui;
 }

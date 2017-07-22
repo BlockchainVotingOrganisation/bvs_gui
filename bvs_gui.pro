@@ -17,7 +17,9 @@ SOURCES += \
     Classes/Controller/nodecontroller.cpp \
     Classes/Domain/Model/ballot.cpp \
     Ressources/Private/GUI/ballotForm.cpp \
-    Classes/Service/libgnupg.cpp
+    Classes/Service/libgnupg.cpp \
+    Classes/Controller/ballotcontroller.cpp \
+    Classes/Domain/ballotrepository.cpp
 
 HEADERS += \
     bvs_wallet.h \
@@ -31,7 +33,9 @@ HEADERS += \
     Classes/Controller/nodecontroller.h \
     Classes/Domain/Model/ballot.h \
     Ressources/Private/GUI/ballotForm.h \
-    Classes/Service/libgnupg.h
+    Classes/Service/libgnupg.h \
+    Classes/Controller/ballotcontroller.h \
+    Classes/Domain/ballotrepository.h
 
 FORMS += \
     bvs_wallet.ui \
