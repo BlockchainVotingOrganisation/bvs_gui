@@ -13,8 +13,6 @@ BVS_Wallet::BVS_Wallet(QWidget *parent) :
   QString *blockchain;
   QString *server;
   int *port;
-//  setCentralWidget(ui->listWidget);
-
 }
 
 BVS_Wallet::~BVS_Wallet()

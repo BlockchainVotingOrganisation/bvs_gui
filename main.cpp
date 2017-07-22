@@ -67,14 +67,7 @@ int main(int argc, char *argv[])
     BVS_Wallet b;
 
     QProcess * process = new QProcess;
-    QString cmd = ""; //"multichaind BVS_R2@blockchain-voting.org:6733";
-
-
-    QString blockchain;
-    QString server;
-    QString port;
-//    QString mcd = " -daemon";
-
+    QString cmd, blockchain, server, port;
     bool daemon = false;
 
 
@@ -116,7 +109,6 @@ int main(int argc, char *argv[])
     }
 
     b.show();
-
     return a.exec();
 }
 

@@ -26,12 +26,6 @@ ProjekteAuswahl::~ProjekteAuswahl()
   delete ui;
 }
 
-// Getter und Setter für Projektliste
-
-/*
- * get selected project:  * return ui->projectListe->selectedItems().at(0)->text();
- *
- */
 
 QString ProjekteAuswahl::getProject() {
     if (ui->projectListe->selectedItems().length() > 0) {
@@ -42,7 +36,7 @@ QString ProjekteAuswahl::getProject() {
 
 QString ProjekteAuswahl::on_projectListe_itemSelectionChanged()
 {
-    qDebug() << ui->projectListe->selectedItems().at(0)->text();
+    qDebug() << "Lade Stream" << ui->projectListe->selectedItems().at(0)->text() + ".";
     return ui->projectListe->selectedItems().at(0)->text();
 }
 
