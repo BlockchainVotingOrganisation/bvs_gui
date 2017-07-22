@@ -119,3 +119,8 @@ void BVS_Wallet::closeEvent()
     int i = nc.stopDaemon(args);
     qDebug() << "Anwendung beenden Status:" << i;
 }
+
+void BVS_Wallet::on_action_Stimmzettel_triggered()
+{
+
+}

@@ -16,6 +16,9 @@ public:
     Project createAction();
     Project editAction(QString project);
     Project deleteAction(QString project);
+
+private:
+    ProjectRepository *repository;
 };
 
 #endif // PROJECTCONTROLLER_H

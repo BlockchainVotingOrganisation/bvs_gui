@@ -7,6 +7,14 @@ class BallotForm
 {
 public:
     BallotForm();
+
+    QStringList findAllBallots(QString project);
+    QStringList findAllOptions(QString ballot);
+    Ballot findByReference(QString project);
+
+private:
+    QString *ballot;
+    QString *project;
 };
 
 #endif // BALLOT_H

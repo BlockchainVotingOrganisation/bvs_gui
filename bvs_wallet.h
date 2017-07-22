@@ -48,6 +48,8 @@ private slots:
 //  int getPort();
 //  void setPort(QString port);
 
+  void on_action_Stimmzettel_triggered();
+
 private:
     Ui::BVS_Wallet *ui;
 

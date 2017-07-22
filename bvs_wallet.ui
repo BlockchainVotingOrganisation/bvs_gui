@@ -17,7 +17,7 @@
    <string>BVS Client</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">background: white;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
@@ -58,6 +58,10 @@
      <height>22</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background: black;
+color: white;</string>
+   </property>
    <widget class="QMenu" name="menuDatei">
     <property name="title">
      <string>&amp;Datei</string>
@@ -81,31 +85,13 @@
      <string>&amp;Über BVS</string>
     </property>
    </widget>
-   <widget class="QMenu" name="menu_W_hlen">
-    <property name="title">
-     <string>&amp;Wählen</string>
-    </property>
-   </widget>
    <widget class="QMenu" name="menu_Konto">
     <property name="title">
      <string>&amp;Konto</string>
     </property>
    </widget>
-   <widget class="QMenu" name="menu_Statistik">
-    <property name="title">
-     <string>&amp;Statistik</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menu_Ansicht">
-    <property name="title">
-     <string>&amp;Ansicht</string>
-    </property>
-   </widget>
    <addaction name="menuDatei"/>
-   <addaction name="menu_Ansicht"/>
-   <addaction name="menu_W_hlen"/>
    <addaction name="menu_Konto"/>
-   <addaction name="menu_Statistik"/>
    <addaction name="menu_Hilfe"/>
    <addaction name="menu_ber_BVS"/>
   </widget>
@@ -123,12 +109,11 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="action_Connect"/>
-   <addaction name="actionDisconnect"/>
    <addaction name="actionAuswaehlen"/>
    <addaction name="action_Stimmzettel"/>
    <addaction name="separator"/>
-   <addaction name="actionAktualisieren"/>
+   <addaction name="actionErgebnis"/>
+   <addaction name="actionHilfe"/>
   </widget>
   <action name="action_Beenden">
    <property name="text">
@@ -155,6 +140,16 @@
     <string>&amp;Ausführen</string>
    </property>
   </action>
+  <action name="actionNeu">
+   <property name="text">
+    <string>Neu</string>
+   </property>
+  </action>
+  <action name="action_Stimmzettel">
+   <property name="text">
+    <string>&amp;Stimmzettel</string>
+   </property>
+  </action>
   <action name="actionAuswaehlen">
    <property name="text">
     <string>Wahl öffnen</string>
@@ -163,29 +158,14 @@
     <string>Project auswählen</string>
    </property>
   </action>
-  <action name="actionNeu">
+  <action name="actionErgebnis">
    <property name="text">
-    <string>Neu</string>
+    <string>Ergebnis</string>
    </property>
   </action>
-  <action name="actionAktualisieren">
+  <action name="actionHilfe">
    <property name="text">
-    <string>Ansicht Aktualisieren</string>
-   </property>
-  </action>
-  <action name="action_Connect">
-   <property name="text">
-    <string>&amp;Connect</string>
-   </property>
-  </action>
-  <action name="actionDisconnect">
-   <property name="text">
-    <string>&amp;Disconnect</string>
-   </property>
-  </action>
-  <action name="action_Stimmzettel">
-   <property name="text">
-    <string>&amp;Stimmzettel</string>
+    <string>Hilfe</string>
    </property>
   </action>
  </widget>

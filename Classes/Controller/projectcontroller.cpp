@@ -8,6 +8,11 @@ ProjectController::ProjectController()
 }
 
 QStringList ProjectController::listAction() {
+    ProjectRepository *repository;
+    return repository->findAllProjects();
+}
+
+Project ProjectController::showAction(QString project) {
 
 }
 

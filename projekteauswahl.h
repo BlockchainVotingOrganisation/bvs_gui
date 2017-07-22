@@ -3,7 +3,7 @@
 
 
 #include <QDialog>
-
+#include "Classes/Controller/projectController.h"
 
 namespace Ui {
   class ProjekteAuswahl;
@@ -26,6 +26,7 @@ public slots:
 
 private:
   Ui::ProjekteAuswahl *ui;
+  ProjectController *controller;
 };
 
 #endif // PROJEKTEAUSWAHL_H

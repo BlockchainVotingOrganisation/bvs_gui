@@ -5,17 +5,16 @@
 #include <QProcess>
 #include <qdebug.h>
 #include <QJsonArray>
-#include "Classes/Domain/projectRepository.h"
-
+//#include "Classes/Domain/projectRepository.h"
 
 ProjekteAuswahl::ProjekteAuswahl(QWidget *parent) :
   QDialog(parent),
   ui(new Ui::ProjekteAuswahl)
 {
     ui->setupUi(this);
-    ProjectRepository *repository;
+
     QStringList projects;
-    projects = repository->findAllProjects();
+    projects = this->controller->listAction();
     if (projects.length() > 0) {
         ui->projectListe->insertItems(0, projects);
     }
@@ -39,6 +38,3 @@ QString ProjekteAuswahl::on_projectListe_itemSelectionChanged()
     qDebug() << "Lade Stream" << ui->projectListe->selectedItems().at(0)->text() + ".";
     return ui->projectListe->selectedItems().at(0)->text();
 }
-
-
-
