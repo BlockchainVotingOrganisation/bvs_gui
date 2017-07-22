@@ -1,8 +1,11 @@
-# bvs_gui - BVS Voting Client
+# bvs_gui - BVS Voting Client (QT)
 
-## Install
+## Installation
 
 ### Prerequisites
 
-Requires multichain, see https://github.com/multichain/multichain
+Required 
+- multichain, see https://github.com/multichain/multichain
+
+### install bvs_Gui
 
