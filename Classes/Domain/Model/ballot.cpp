@@ -1,6 +1,6 @@
 #include "ballot.h"
 
-Ballot::Ballot()
+BallotForm::BallotForm()
 {
 
 }

@@ -3,10 +3,10 @@
 
 #include <QtCore/qglobal.h>
 
-class Ballot
+class BallotForm
 {
 public:
-    Ballot();
+    BallotForm();
 };
 
 #endif // BALLOT_H
