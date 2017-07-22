@@ -9,5 +9,5 @@ Required
 
 ### Install bvs_gui
 
-### Running bvs_gui
+## Running bvs_gui
 
