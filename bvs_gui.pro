@@ -14,7 +14,8 @@ SOURCES += \
     Classes/Controller/projectcontroller.cpp \
     settingsdialog.cpp \
     Classes/Domain/Model/node.cpp \
-    Classes/Controller/nodecontroller.cpp
+    Classes/Controller/nodecontroller.cpp \
+    Classes/Domain/Model/ballot.cpp
 
 HEADERS += \
     bvs_wallet.h \
@@ -25,7 +26,8 @@ HEADERS += \
     Classes/Controller/projectController.h \
     settingsdialog.h \
     Classes/Domain/Model/node.h \
-    Classes/Controller/nodecontroller.h
+    Classes/Controller/nodecontroller.h \
+    Classes/Domain/Model/ballot.h
 
 FORMS += \
     bvs_wallet.ui \
