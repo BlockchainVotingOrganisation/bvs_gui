@@ -1,2 +1,4 @@
-# bvs_gui
-BVS Voting Client
+### bvs_gui - BVS Voting Client
+
+##Prereuisites
+
