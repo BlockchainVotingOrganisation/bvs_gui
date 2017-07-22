@@ -7,6 +7,7 @@
 #include <QMainWindow>
 #include "ausfuehrendialog.h"
 #include "Classes/Domain/projectRepository.h"
+#include "Classes/Domain/Model/node.h"
 
 namespace Ui {
   class BVS_Wallet;
@@ -23,16 +24,6 @@ public:
   explicit BVS_Wallet(QWidget *parent = 0);
   ~BVS_Wallet();
 
-    int getPort();
-    void setPort(int port);
-
-
-    QString getBlockchain();
-    void setBlockchain(QString chain);
-
-    QString getServer();
-    void setServer(QString myserver);
-
 private slots:
   void on_action_Ausf_hren_triggered();
 
@@ -44,11 +35,21 @@ private slots:
 
   void on_actionEinstellungen_triggered();
 
+  void closeEvent();
+
+public slots:
+//  QString getBlockchain();
+//  void setBlockchain(QString chain);
+//  QString getServer();
+//  void setServer(QString myserver);
+//  int getPort();
+//  void setPort(QString port);
+
 private:
     Ui::BVS_Wallet *ui;
     QString *blockchain;
     QString *server;
-    int *port;
+    QString *port;
 };
 
 #endif // BVS_WALLET_H

@@ -59,14 +59,11 @@
 
 int main(int argc, char *argv[])
 {
+    QApplication app(argc, argv); // ->this process
+    QStringList args = app.arguments(); // ->console cmd args
+    BVS_Wallet b; // ->GUI MainWindow
 
-    QApplication a(argc, argv);
-    QStringList args = a.arguments();
-
-
-    BVS_Wallet b;
-
-    QProcess * process = new QProcess;
+    QProcess * process = new QProcess; // ->Multichain daemon process
     QString cmd, blockchain, server, port;
     bool daemon = false;
 
@@ -81,26 +78,26 @@ int main(int argc, char *argv[])
         else if (arg.contains("blockchain=") == true) {
             QStringList argBlockchain= arg.split("=");
             blockchain = argBlockchain[1];
-            b.setBlockchain(blockchain);
+//            b.setBlockchain(*blockchain);
         }
         else if (arg.contains("server=") == true) {
 
             QStringList argBlockchain = arg.split("=");
             server = argBlockchain[1];
-            b.setServer(server);
+//            b.setServer(*server);
         }
 
         else if (arg.contains("port=") == true) {
             QStringList argBlockchain = arg.split("=");
             port = argBlockchain[1];
-            b.setPort(port.toInt());
+//            b.setPort(*port);
         }
     }
 
     cmd = "multichaind " + blockchain + "@" + server + ":" + port + " -daemon";
 
-    qDebug() <<"cmd; " << cmd;
-    qDebug() << "Starte BVS-Service... ";
+    qDebug() <<"cmd: " << cmd;
+//    qDebug() << "Starte BVS-Service... ";
 
     if (daemon == true) {
         process->start(cmd);
@@ -109,7 +106,7 @@ int main(int argc, char *argv[])
     }
 
     b.show();
-    return a.exec();
+    return app.exec();
 }
 
 

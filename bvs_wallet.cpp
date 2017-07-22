@@ -3,6 +3,9 @@
 #include "ausfuehrendialog.h"
 #include "projekteauswahl.h"
 #include "settingsdialog.h"
+#include <QDebug>
+#include <QCloseEvent>
+#include "Classes/Controller/nodecontroller.h"
 
 
 BVS_Wallet::BVS_Wallet(QWidget *parent) :
@@ -10,23 +13,32 @@ BVS_Wallet::BVS_Wallet(QWidget *parent) :
   ui(new Ui::BVS_Wallet)
 {
   ui->setupUi(this);
-  QString *blockchain;
-  QString *server;
-  int *port;
+
 }
 
+/**
+ * @brief BVS_Wallet::~BVS_Wallet -closes the bvs_gui mainwindow
+ *
+ */
 BVS_Wallet::~BVS_Wallet()
 {
-  delete ui;
+//    qDebug() << "Anwendung beenden... (2)";
+    closeEvent();
+    delete ui;
 }
 
-
+/**
+ * @brief BVS_Wallet::on_action_Ausf_hren_triggered
+ */
 void BVS_Wallet::on_action_Ausf_hren_triggered()
 {
   AusfuehrenDialog *a = new AusfuehrenDialog;
   a->show();
 }
 
+/**
+ * @brief BVS_Wallet::on_actionWahl_ffnen_triggered
+ */
 void BVS_Wallet::on_actionWahl_ffnen_triggered()
 {
     ProjekteAuswahl *p = new ProjekteAuswahl;
@@ -41,11 +53,18 @@ void BVS_Wallet::on_actionWahl_ffnen_triggered()
     }
 }
 
+/**
+ * @brief BVS_Wallet::on_action_Beenden_triggered
+ */
 void BVS_Wallet::on_action_Beenden_triggered()
 {
+    closeEvent();
     exit(0);
 }
 
+/**
+ * @brief BVS_Wallet::on_actionAuswaehlen_triggered
+ */
 void BVS_Wallet::on_actionAuswaehlen_triggered()
 {
     ProjekteAuswahl *p = new ProjekteAuswahl;
@@ -59,32 +78,22 @@ void BVS_Wallet::on_actionAuswaehlen_triggered()
         ui->listWidget->addItems(repository->findAllItems(project));    }
 }
 
+/**
+ * @brief BVS_Wallet::on_actionEinstellungen_triggered
+ */
 void BVS_Wallet::on_actionEinstellungen_triggered()
 {
     SettingsDialog *settings = new SettingsDialog;
     settings->show();
 }
 
-void BVS_Wallet::setBlockchain(QString chain) {
-//    *blockchain = chain;
-}
-
-void BVS_Wallet::setServer(QString myserver) {
-//    *server = myserver;
-}
-
-void BVS_Wallet::setPort(int port) {
-//    this->port = port;
-}
-
-QString BVS_Wallet::getBlockchain() {
-//    return this->blockchain;
-}
-
-QString BVS_Wallet::getServer() {
-//    return this->server;
-}
-
-int BVS_Wallet::getPort() {
-//    return this->port;
+/**
+ * @brief BVS_Wallet::closeEvent
+ */
+void BVS_Wallet::closeEvent()
+{
+//    qDebug() << "Anwendung beenden - Blockchain: ";
+    NodeController nc;
+    int i = nc.stopDaemon();
+    qDebug() << "Anwendung beenden Status:" << i;
 }

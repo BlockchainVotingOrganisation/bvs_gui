@@ -13,7 +13,8 @@ SOURCES += \
     Classes/Domain/projectRepository.cpp \
     Classes/Controller/projectcontroller.cpp \
     settingsdialog.cpp \
-    Classes/Domain/Model/node.cpp
+    Classes/Domain/Model/node.cpp \
+    Classes/Controller/nodecontroller.cpp
 
 HEADERS += \
     bvs_wallet.h \
@@ -23,7 +24,8 @@ HEADERS += \
     Classes/Domain/projectRepository.h \
     Classes/Controller/projectController.h \
     settingsdialog.h \
-    Classes/Domain/Model/node.h
+    Classes/Domain/Model/node.h \
+    Classes/Controller/nodecontroller.h
 
 FORMS += \
     bvs_wallet.ui \
