@@ -54,50 +54,70 @@
 //#include "mainwindow.h"
 #include "bvs_wallet.h"
 #include <QDebug>
+#include <getopt.h>
 
 
 int main(int argc, char *argv[])
 {
 
     QApplication a(argc, argv);
+    QStringList args = a.arguments();
+
+
+    BVS_Wallet b;
 
     QProcess * process = new QProcess;
-    QString cmd = "multichaind BVS_R2@blockachin-voting.org:6733";
+    QString cmd = ""; //"multichaind BVS_R2@blockchain-voting.org:6733";
+
+
+    QString blockchain;
+    QString server;
+    QString port;
+//    QString mcd = " -daemon";
+
     bool daemon = false;
 
-    qDebug() << "Starte BVS-Service... Please be patient while daemon starts!";
 
-    qDebug() << "argc = " << argc;
+//    qDebug() << "argc = " << argc;
     for(int i = 0; i < argc; i++) {
-        qDebug() << "argv[" << i << "] = " << argv[i];
-        QString arg = argv[i];
+//        qDebug() << "argv[" << i << "] = " << argv[i] << "\n";
+        QString arg = args[i];
         if (arg == "--with-multichain") {
             daemon = true;
-            // cmdArray[0] = "multichaind ";
         }
-        else if (arg.contains("blockchain") == true) {
-            // cmdArray[1] += split("=") [1]
+        else if (arg.contains("blockchain=") == true) {
+            QStringList argBlockchain= arg.split("=");
+            blockchain = argBlockchain[1];
+            b.setBlockchain(blockchain);
         }
-        else if (arg.contains("server") == true) {
-            // cmdArray[2] =split("=") [1]
+        else if (arg.contains("server=") == true) {
+
+            QStringList argBlockchain = arg.split("=");
+            server = argBlockchain[1];
+            b.setServer(server);
         }
 
-        else if (arg.contains("port") == true) {
-            // cmdArray[3] = split("=") [1]
+        else if (arg.contains("port=") == true) {
+            QStringList argBlockchain = arg.split("=");
+            port = argBlockchain[1];
+            b.setPort(port.toInt());
         }
-
-        //cmdArray[4] = " -daemon";
-        cmd += " -daemon";
     }
+
+    cmd = "multichaind " + blockchain + "@" + server + ":" + port + " -daemon";
+
+    qDebug() <<"cmd; " << cmd;
+    qDebug() << "Starte BVS-Service... ";
 
     if (daemon == true) {
         process->start(cmd);
         process->waitForFinished();
-        qDebug() << "Getting data from blockchain...";
+        qDebug() << "Getting data from blockchain... Please be patient while daemon starts!";
     }
 
-    BVS_Wallet b;
     b.show();
 
     return a.exec();
 }
+
+

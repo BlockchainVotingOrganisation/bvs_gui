@@ -24,13 +24,14 @@ public:
   ~BVS_Wallet();
 
     int getPort();
-    void setPort();
+    void setPort(int port);
+
 
     QString getBlockchain();
-    void setBlockchain();
+    void setBlockchain(QString chain);
 
     QString getServer();
-    void setServer();
+    void setServer(QString myserver);
 
 private slots:
   void on_action_Ausf_hren_triggered();

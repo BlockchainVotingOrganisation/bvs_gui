@@ -10,7 +10,9 @@ BVS_Wallet::BVS_Wallet(QWidget *parent) :
   ui(new Ui::BVS_Wallet)
 {
   ui->setupUi(this);
-
+  QString *blockchain;
+  QString *server;
+  int *port;
 //  setCentralWidget(ui->listWidget);
 
 }
@@ -63,4 +65,28 @@ void BVS_Wallet::on_actionEinstellungen_triggered()
 {
     SettingsDialog *settings = new SettingsDialog;
     settings->show();
+}
+
+void BVS_Wallet::setBlockchain(QString chain) {
+//    *blockchain = chain;
+}
+
+void BVS_Wallet::setServer(QString myserver) {
+//    *server = myserver;
+}
+
+void BVS_Wallet::setPort(int port) {
+//    this->port = port;
+}
+
+QString BVS_Wallet::getBlockchain() {
+//    return this->blockchain;
+}
+
+QString BVS_Wallet::getServer() {
+//    return this->server;
+}
+
+int BVS_Wallet::getPort() {
+//    return this->port;
 }
