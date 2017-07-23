@@ -23,14 +23,14 @@ ProjectRepository::ProjectRepository()
  *
  * Description: gets all streams from multichain blockchain. a stream represents one election project.
  */
-QStringList ProjectRepository::findAllProjects() {
+QStringList ProjectRepository::findAllProjects(QString blockchain) {
 
     QStringList projectList;
     QProcess * process = new QProcess;
     QByteArray stdOut;
     QString cmd;
 
-    cmd = "multichain-cli BVS_R2 liststreams";
+    cmd = "multichain-cli " +blockchain + " liststreams";
 
     process->start(cmd);
     process->waitForFinished();
@@ -65,16 +65,16 @@ QStringList ProjectRepository::findAllProjects() {
  * @param project
  * @return
  */
-QStringList ProjectRepository::findAllItems(QString project) {
+QStringList ProjectRepository::findAllItems(QString blockchain, QString project) {
 
     QStringList itemList;
     QProcess * process = new QProcess;
     QByteArray stdOut;
 
-    process->start("multichain-cli BVS_R2 subscribe " + project + " false"); //project);
+    process->start("multichain-cli " + blockchain + " subscribe " + project + " false"); //project);
 
     process->waitForFinished();
-    process->start("multichain-cli BVS_R2 liststreamitems " + project); //project);
+    process->start("multichain-cli " + blockchain + " liststreamitems " + project); //project);
     process->waitForFinished();
     stdOut.append(process->readAllStandardOutput());
 

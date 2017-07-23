@@ -14,7 +14,7 @@ class ProjekteAuswahl : public QDialog
   Q_OBJECT
 
 public:
-  explicit ProjekteAuswahl(QWidget *parent = 0);
+  explicit ProjekteAuswahl(QStringList args, QWidget *parent = 0);
   ~ProjekteAuswahl();
 
 

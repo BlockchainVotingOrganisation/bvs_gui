@@ -7,9 +7,9 @@ ProjectController::ProjectController()
 
 }
 
-QStringList ProjectController::listAction() {
+QStringList ProjectController::listAction(QString blockchain) {
     ProjectRepository *repository;
-    return repository->findAllProjects();
+    return repository->findAllProjects(blockchain);
 }
 
 //Project ProjectController::showAction(QString project) {

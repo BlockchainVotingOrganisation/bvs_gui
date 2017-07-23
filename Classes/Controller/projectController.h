@@ -2,6 +2,7 @@
 #define PROJECTCONTROLLER_H
 
 #include "Classes/Domain/Model/project.h"
+#include "Classes/Controller/projectController.h"
 #include "Classes/Domain/projectRepository.h"
 
 #include <QtCore/qglobal.h>
@@ -10,7 +11,7 @@ class ProjectController
 {
 public:
     ProjectController();
-    QStringList listAction();
+    QStringList listAction(QString blockchain);
 
     Project showAction(QString project);
     Project newAction();

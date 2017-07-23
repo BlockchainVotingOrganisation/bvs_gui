@@ -5,7 +5,6 @@
 #include "settingsdialog.h"
 #include <QDebug>
 #include <QCloseEvent>
-#include "Classes/Controller/nodecontroller.h"
 
 
 /**
@@ -22,8 +21,14 @@ BVS_Wallet::BVS_Wallet(QStringList args, QWidget *parent) :
     this->args = args;
 
 //    QString  arg[Args.length()];
+    QString blockchain;
 
     for(int i = 0; i < args.length(); i++) {
+        QStringList argBlockchain= args.at(i).split("=");
+
+        if (argBlockchain[0] == "-blockchain") {
+            blockchain = argBlockchain[1];
+        }
 //        ui->listWidget->addItem(args.at(i));
         if (args.at(i) == "-debug") {
             qDebug() << "\nArgs:" << args.length() << "";
@@ -60,7 +65,7 @@ void BVS_Wallet::on_action_Ausf_hren_triggered()
  */
 void BVS_Wallet::on_actionWahl_ffnen_triggered()
 {
-    ProjekteAuswahl *p = new ProjekteAuswahl;
+    ProjekteAuswahl *p = new ProjekteAuswahl(this->args);
     p->show();
 
     if (p->exec()==QDialog::Accepted) {
@@ -86,15 +91,23 @@ void BVS_Wallet::on_action_Beenden_triggered()
  */
 void BVS_Wallet::on_actionAuswaehlen_triggered()
 {
-    ProjekteAuswahl *p = new ProjekteAuswahl;
+    ProjekteAuswahl *p = new ProjekteAuswahl(this->args);
     p->show();
 
-    ProjectRepository *repository;
+    QString blockchain;
+
+    for(int i = 0; i < args.length(); i++) {
+        QStringList argBlockchain= args.at(i).split("=");
+        if (argBlockchain[0] == "-blockchain") {
+            blockchain = argBlockchain[1];
+        }
+    }
 
     if (p->exec()==QDialog::Accepted) {
         QString project = p->getProject();
         ui->label->setText(project);
-        ui->listWidget->addItems(repository->findAllItems(project));    }
+        ui->listWidget->addItems(repository->findAllItems(blockchain, project));
+    }
 }
 
 /**

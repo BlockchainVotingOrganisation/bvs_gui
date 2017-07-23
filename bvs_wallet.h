@@ -6,8 +6,11 @@
 
 #include <QMainWindow>
 #include "ausfuehrendialog.h"
-#include "Classes/Domain/projectRepository.h"
+
 #include "Classes/Domain/Model/node.h"
+#include "Classes/Controller/nodecontroller.h"
+#include "Classes/Controller/projectController.h"
+#include "Classes/Domain/projectRepository.h"
 
 namespace Ui {
   class BVS_Wallet;
@@ -52,7 +55,8 @@ private slots:
 
 private:
     Ui::BVS_Wallet *ui;
-
+    ProjectController *controller;
+    ProjectRepository *repository;
     QString *blockchain;
     QString *server;
     QString *port;

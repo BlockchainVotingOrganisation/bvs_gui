@@ -5,16 +5,15 @@
 #include <QProcess>
 #include <qdebug.h>
 #include <QJsonArray>
-//#include "Classes/Domain/projectRepository.h"
 
-ProjekteAuswahl::ProjekteAuswahl(QWidget *parent) :
+ProjekteAuswahl::ProjekteAuswahl(QStringList args, QWidget *parent) :
   QDialog(parent),
   ui(new Ui::ProjekteAuswahl)
 {
     ui->setupUi(this);
 
     QStringList projects;
-    projects = this->controller->listAction();
+    projects = this->controller->listAction("testnet");
     if (projects.length() > 0) {
         ui->projectListe->insertItems(0, projects);
     }
