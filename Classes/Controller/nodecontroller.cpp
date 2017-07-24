@@ -29,9 +29,14 @@ int NodeController::stopDaemon(QStringList args) {
 //         qDebug() << "Node:" << args.at(i);
     }
 
-    QProcess *p = new QProcess;
-    qDebug() << "multichain-cli " + blockchain + " stop";
-    p->start("multichain-cli " + blockchain + " stop");
-    p->waitForFinished();
+    QProcess p;
+    QStringList arguments;
+    arguments.append(blockchain);
+    arguments.append("stop");
+    QString cmd = "C:\\Users\\louis\\Programme\\multichain\\multichain-cli.exe";
+    qDebug() << cmd << blockchain << "stop";
+    if (QProcess::startDetached(cmd, arguments))
+        qDebug() << "Exit.";
+//    p->waitForFinished();
     return 0;
 }

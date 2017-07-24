@@ -64,10 +64,8 @@ int main(int argc, char *argv[])
     BVS_Wallet b(args); // ->GUI MainWindow
 //    Node *node = new Node; // -> BC-Node multichain
 
-    QProcess * process = new QProcess; // ->Multichain daemon process
     QString cmd, blockchain, server, port;
     bool daemon = false;
-
 
 //    qDebug() << "argc = " << argc;
     for(int i = 0; i < argc; i++) {
@@ -97,17 +95,22 @@ int main(int argc, char *argv[])
         }
     }
 
-    cmd = "multichaind " + blockchain + "@" + server + ":" + port + " -daemon";
-
-    qDebug() <<"cmd: " << cmd;
-//    qDebug() << "Starte BVS-Service... ";
+    cmd = "C:\\Users\\louis\\Programme\\multichain\\multichaind.exe";
+    qDebug() << cmd << blockchain << "-daemon";
+    QStringList arguments;
+    arguments.append(blockchain + "@" + server + ":" + port);
+    arguments.append("-daemon");
 
     if (daemon == true) {
-        process->start(cmd);
-        process->waitForFinished();
-        qDebug() << "Getting data from blockchain... Please be patient while daemon starts!";
-    }
 
-    b.show();
-    return app.exec();
+        if (QProcess::startDetached(cmd, arguments)) {
+            qDebug() << "Starte BVS-Service... ";
+            qDebug() << "Getting data from blockchain... Please be patient while daemon starts!";
+            b.show();
+            return app.exec();
+        }
+        else {
+            exit(0);
+        }
+    }
 }

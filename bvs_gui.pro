@@ -1,6 +1,5 @@
 QT += widgets
 
-
 TARGET = bvs
 TEMPLATE = app
 
