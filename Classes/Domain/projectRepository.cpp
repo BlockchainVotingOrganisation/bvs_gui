@@ -23,12 +23,21 @@ ProjectRepository::ProjectRepository()
  *
  * Description: gets all streams from multichain blockchain. a stream represents one election project.
  */
-QStringList ProjectRepository::findAllProjects(QString blockchain) {
+QStringList ProjectRepository::findAllProjects(QStringList args) {
 
     QStringList projectList;
     QProcess * process = new QProcess;
     QByteArray stdOut;
     QString cmd;
+
+    QString blockchain;
+
+    for(int i = 0; i < args.length(); i++) {
+        QStringList argBlockchain= args.at(i).split("=");
+        if (argBlockchain[0] == "-blockchain") {
+            blockchain = argBlockchain[1];
+        }
+    }
 
     cmd = "multichain-cli " +blockchain + " liststreams";
 
@@ -65,18 +74,28 @@ QStringList ProjectRepository::findAllProjects(QString blockchain) {
  * @param project
  * @return
  */
-QStringList ProjectRepository::findAllItems(QString blockchain, QString project) {
+QStringList ProjectRepository::findAllItems(QStringList args, QString project) {
 
     QStringList itemList;
-    QProcess * process = new QProcess;
     QByteArray stdOut;
+    QString blockchain, path;
 
-    process->start("multichain-cli " + blockchain + " subscribe " + project + " false"); //project);
+    for(int i = 0; i < args.length(); i++) {
+        QString arg = args[i];
+        QStringList argBlockchain= args.at(i).split("=");
+        if (argBlockchain[0] == "-blockchain") {
+            blockchain = argBlockchain[1];
+        }
+        else if (arg.contains("path=") == true) {
+            QStringList argBlockchain = arg.split("=");
+            path = argBlockchain[1];
+        }
+    }
 
-    process->waitForFinished();
-    process->start("multichain-cli " + blockchain + " liststreamitems " + project); //project);
-    process->waitForFinished();
-    stdOut.append(process->readAllStandardOutput());
+
+    QProcess::startDetached(path + "multichain-cli " + blockchain + " subscribe " + project + " false"); //project);
+
+    QProcess::startDetached(path + "multichain-cli " + blockchain + " liststreamitems " + project); //project);
 
     QJsonDocument jsonDocument = QJsonDocument::fromJson(stdOut);
 

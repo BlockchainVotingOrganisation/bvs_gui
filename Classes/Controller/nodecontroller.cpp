@@ -8,7 +8,7 @@ NodeController::NodeController()
 }
 
 int NodeController::stopDaemon(QStringList args) {
-    QString blockchain, server, port;
+    QString blockchain, path;
 
     for(int i = 0; i < args.length(); i++) {
 
@@ -17,26 +17,20 @@ int NodeController::stopDaemon(QStringList args) {
         if (argBlockchain[0] == "-blockchain") {
             blockchain = argBlockchain[1];
         }
-//        else if (argBlockchain[0] == "-server") {
-//            server = argBlockchain[1];
-//        }
-
-//        else if (argBlockchain[0] == "-port") {
-//            QStringList argBlockchain = args.at(i).split("=");
-//            port = argBlockchain[1];
-//        }
-
-//         qDebug() << "Node:" << args.at(i);
+        else if (argBlockchain[0] == "-path") {
+            path = argBlockchain[1];
+        }
     }
 
     QProcess p;
     QStringList arguments;
     arguments.append(blockchain);
     arguments.append("stop");
-    QString cmd = "C:\\Users\\louis\\Programme\\multichain\\multichain-cli.exe";
+
+    QString cmd = path + "multichain-cli.exe";
     qDebug() << cmd << blockchain << "stop";
+
     if (QProcess::startDetached(cmd, arguments))
         qDebug() << "Exit.";
-//    p->waitForFinished();
     return 0;
 }

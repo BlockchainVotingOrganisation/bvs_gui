@@ -12,8 +12,8 @@ class ProjectRepository
 
 public:
     explicit ProjectRepository();
-    QStringList findAllProjects(QString blockchain);
-    QStringList findAllItems(QString blockchain, QString project);
+    QStringList findAllProjects(QStringList args);
+    QStringList findAllItems(QStringList args, QString project);
     Project findByName(QString project);
 
 private:

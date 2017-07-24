@@ -11,7 +11,7 @@ class ProjectController
 {
 public:
     ProjectController();
-    QStringList listAction(QString blockchain);
+    QStringList listAction(QStringList args);
 
     Project showAction(QString project);
     Project newAction();
@@ -21,7 +21,7 @@ public:
 
 private:
     ProjectRepository *repository;
-    QStringList listBallotsAction(QString project);
+    QStringList listBallotsAction(QStringList args);
 };
 
 #endif // PROJECTCONTROLLER_H

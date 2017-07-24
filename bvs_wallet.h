@@ -32,25 +32,11 @@ public:
 
 private slots:
   void on_action_Ausf_hren_triggered();
-
   void on_actionWahl_ffnen_triggered();
-
   void on_action_Beenden_triggered();
-
   void on_actionAuswaehlen_triggered();
-
   void on_actionEinstellungen_triggered();
-
   void closeEvent();
-
-//public slots:
-//  QString getBlockchain();
-//  void setBlockchain(QString chain);
-//  QString getServer();
-//  void setServer(QString myserver);
-//  int getPort();
-//  void setPort(QString port);
-
   void on_action_Stimmzettel_triggered();
 
 private:
@@ -60,6 +46,7 @@ private:
     QString *blockchain;
     QString *server;
     QString *port;
+    QString *path;
     QStringList args;
 };
 
