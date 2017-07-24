@@ -121,10 +121,11 @@ int main(int argc, char *argv[])
     arguments.append("-daemon");
 
     if (multichain == true) {
-
-        if (QProcess::startDetached(cmd, arguments)) {
-//            qDebug() << "Starte BVS-Service... ";
-//            qDebug() << "Getting data from blockchain... Please be patient while daemon starts!";
+        QProcess process;
+        process.start(cmd, arguments);
+        if (process.isOpen()) {
+            qDebug() << "Starte BVS-Service...:" << process.processId();
+            qDebug() << "Getting data from blockchain... Please be patient while daemon starts!";
             b.show();
             return app.exec();
         }

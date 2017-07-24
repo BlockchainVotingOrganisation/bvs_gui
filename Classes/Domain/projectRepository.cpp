@@ -26,24 +26,32 @@ ProjectRepository::ProjectRepository()
 QStringList ProjectRepository::findAllProjects(QStringList args) {
 
     QStringList projectList;
-    QProcess * process = new QProcess;
+//    QProcess * process = new QProcess;
     QByteArray stdOut;
     QString cmd;
 
-    QString blockchain;
+    QString blockchain, path;
+    QStringList arguments;
+    QProcess process;
 
     for(int i = 0; i < args.length(); i++) {
         QStringList argBlockchain= args.at(i).split("=");
         if (argBlockchain[0] == "-blockchain") {
             blockchain = argBlockchain[1];
         }
+        else if (argBlockchain[0] == "-path") {
+            path = argBlockchain[1];
+        }
     }
+    arguments.append(blockchain);
+    arguments.append("liststreams");
 
-    cmd = "multichain-cli " +blockchain + " liststreams";
+    cmd = path + "multichain-cli.exe";
 
-    process->start(cmd);
-    process->waitForFinished();
-    stdOut.append(process->readAllStandardOutput());
+    process.start(cmd, arguments);
+    process.waitForFinished();
+    qDebug() << process.readAllStandardOutput();
+    stdOut.append(process.readAllStandardOutput());
 
     QJsonDocument jsonDocument = QJsonDocument::fromJson(stdOut);
 
