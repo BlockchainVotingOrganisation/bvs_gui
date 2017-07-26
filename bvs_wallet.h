@@ -38,6 +38,7 @@ private slots:
   void on_actionEinstellungen_triggered();
   void closeEvent();
   void on_action_Stimmzettel_triggered();
+  void projectOpen();
 
 private:
     Ui::BVS_Wallet *ui;
@@ -46,7 +47,6 @@ private:
     QString *blockchain;
     QString *server;
     QString *port;
-    QString *path;
     QStringList args;
 };
 
