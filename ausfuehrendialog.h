@@ -12,7 +12,7 @@ class AusfuehrenDialog : public QDialog
   Q_OBJECT
 
 public:
-  explicit AusfuehrenDialog(QWidget *parent = 0);
+  explicit AusfuehrenDialog(QStringList args, QWidget *parent = 0);
   ~AusfuehrenDialog();
 
 private slots:
@@ -20,6 +20,7 @@ private slots:
 
 private:
   Ui::AusfuehrenDialog *ui;
+  QStringList args;
 
 };
 
