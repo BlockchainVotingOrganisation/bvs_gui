@@ -9,13 +9,12 @@
 
 
 
-AusfuehrenDialog::AusfuehrenDialog(QWidget *parent) :
+AusfuehrenDialog::AusfuehrenDialog(QStringList args, QWidget *parent) :
   QDialog(parent),
   ui(new Ui::AusfuehrenDialog)
 {
   ui->setupUi(this);//    QRegularExpression regex("\\[|\\]");
-
-
+    this->args = args;
 }
 
 AusfuehrenDialog::~AusfuehrenDialog()
@@ -25,10 +24,34 @@ AusfuehrenDialog::~AusfuehrenDialog()
 
 void AusfuehrenDialog::on_pushButton_clicked()
 {
-    QProcess * process = new QProcess;
+    QProcess process;
+    QStringList arguments;
+    QString blockchain, path;
 
-    process->start("multichain-cli BVS_R2 " + ui->cmdInput->text());
-    process->waitForFinished();
-    QString out = process->readAllStandardOutput();
+    for(int i = 0; i < args.size(); i++) {
+
+
+
+        QStringList argBlockchain = args[i].split("=");
+
+
+        if (args[i].contains("blockchain=") == true) {
+
+            blockchain = argBlockchain[1];
+        }
+
+
+        else if (args[i].contains("path=") == true) {
+
+            path = argBlockchain[1];
+        }
+}
+
+    arguments.append(blockchain);
+    arguments.append(ui->cmdInput->text());
+
+    process.start(path + "multichain-cli!", arguments);
+    process.waitForFinished();
+    QString out = process.readAllStandardOutput();
     ui->plainTextEdit->appendPlainText(out);
 }
