@@ -55,7 +55,7 @@ BVS_Wallet::~BVS_Wallet()
  */
 void BVS_Wallet::on_action_Ausf_hren_triggered()
 {
-  AusfuehrenDialog *a = new AusfuehrenDialog;
+  AusfuehrenDialog *a = new AusfuehrenDialog(args);
 
   a->show();
 }
