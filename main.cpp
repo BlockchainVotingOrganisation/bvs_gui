@@ -75,10 +75,8 @@ int main(int argc, char *argv[])
         else if (arg.contains("blockchain=") == true) {
             QStringList argBlockchain= arg.split("=");
             blockchain = argBlockchain[1];
-
         }
         else if (arg.contains("server=") == true) {
-
             QStringList argBlockchain = arg.split("=");
             server = argBlockchain[1];
         }
