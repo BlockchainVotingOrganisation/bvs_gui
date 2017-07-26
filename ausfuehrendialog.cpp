@@ -44,7 +44,7 @@ void AusfuehrenDialog::on_pushButton_clicked()
             path = argBlockchain[1];
             qDebug() << "path" << path;
         }
-}
+    }
 
     arguments.append(blockchain);
     arguments.append(ui->cmdInput->text());
