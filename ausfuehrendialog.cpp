@@ -5,7 +5,6 @@
 #include <QJsonArray>
 #include <QProcess>
 #include <qdebug.h>
-#include <QProcess>
 
 
 
