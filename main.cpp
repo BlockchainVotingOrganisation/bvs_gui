@@ -101,7 +101,7 @@ int main(int argc, char *argv[])
 
     if (multichain == true) {
         QProcess process; // ->Multichain daemon process
-        process.start(cmd, arguments);
+        process.startDetached(cmd, arguments);
         process.waitForFinished();
         qDebug() << "Getting data from blockchain... Please be patient while daemon starts!";
     }
