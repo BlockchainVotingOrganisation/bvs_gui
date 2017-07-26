@@ -11,8 +11,16 @@ ProjekteAuswahl::ProjekteAuswahl(QStringList args, QWidget *parent) :
   ui(new Ui::ProjekteAuswahl)
 {
     ui->setupUi(this);
-    QStringList projects;
+    QString blockchain;
 
+    for(int i = 0; i < args.length(); i++) {
+        QStringList argBlockchain= args.at(i).split("=");
+        if (argBlockchain[0] == "-blockchain") {
+            blockchain = argBlockchain[1];
+        }
+    }
+
+    QStringList projects;
     projects = this->controller->listAction(args);
     if (projects.length() > 0) {
         ui->projectListe->insertItems(0, projects);
