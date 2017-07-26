@@ -28,30 +28,31 @@ void AusfuehrenDialog::on_pushButton_clicked()
     QStringList arguments;
     QString blockchain, path;
 
-    for(int i = 0; i < args.size(); i++) {
+    for(int i = 0; i < args.length(); i++) {
 
 
 
-        QStringList argBlockchain = args[i].split("=");
+        QStringList argBlockchain = this->args[i].split("=");
 
 
-        if (args[i].contains("blockchain=") == true) {
-
+        if (this->args[i].contains("blockchain=") == true) {
             blockchain = argBlockchain[1];
+            qDebug() << "BC:" << blockchain;
         }
 
 
-        else if (args[i].contains("path=") == true) {
-
+        else if (this->args[i].contains("path=") == true) {
             path = argBlockchain[1];
+            qDebug() << "path" << path;
         }
 }
 
     arguments.append(blockchain);
     arguments.append(ui->cmdInput->text());
 
-    process.start(path + "multichain-cli!", arguments);
+    process.start(path + "multichain-cli", arguments);
     process.waitForFinished();
+
     QString out = process.readAllStandardOutput();
     ui->plainTextEdit->appendPlainText(out);
 }
