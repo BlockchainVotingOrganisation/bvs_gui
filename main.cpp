@@ -51,7 +51,6 @@
 
 #include <QApplication>
 #include <QProcess>
-//#include "mainwindow.h"
 #include "bvs_wallet.h"
 #include <QDebug>
 #include <getopt.h>
@@ -59,36 +58,16 @@
 
 int main(int argc, char *argv[])
 {
-    /*
-     * Initialise vars
-     */
-
     QApplication app(argc, argv); // ->this process
     QStringList args = app.arguments(); // ->console cmd args
     BVS_Wallet b(args); // ->GUI MainWindow
-//    Node *node = new Node; // -> BC-Node multichain
-
     QString cmd, blockchain, server, port, path;
     bool multichain = false;
 
-    /*
-     * Only debugging...
-     */
-    if (args.contains("-debug")) {
-        qDebug() << "argc = " << argc;
-        qDebug() << "\nArgs:" << args.length() << "";
-        for(int j = 0; j < args.length(); j++) {
-            qDebug() << "args[" << j << "] = " << args.at(j) << "";
-//          qDebug() << "argv[" << i << "] = " << argv[i] << "\n";
-        }
-    }
 
-    /*
-     *  Setting multichain params:
-     */
-//
+//    qDebug() << "argc = " << argc;
     for(int i = 0; i < argc; i++) {
-
+//        qDebug() << "argv[" << i << "] = " << argv[i] << "\n";
         QString arg = args[i];
         if (arg == "--with-multichain") {
             multichain = true;
@@ -96,6 +75,7 @@ int main(int argc, char *argv[])
         else if (arg.contains("blockchain=") == true) {
             QStringList argBlockchain= arg.split("=");
             blockchain = argBlockchain[1];
+
         }
         else if (arg.contains("server=") == true) {
 
@@ -114,23 +94,20 @@ int main(int argc, char *argv[])
         }
     }
 
-    cmd = path + "multichaind.exe";
-//    qDebug() << cmd << blockchain << "-daemon";
+    cmd = path + "multichaind";
+
     QStringList arguments;
     arguments.append(blockchain + "@" + server + ":" + port);
     arguments.append("-daemon");
 
+
     if (multichain == true) {
-        QProcess process;
+        QProcess process; // ->Multichain daemon process
         process.start(cmd, arguments);
-        if (process.isOpen()) {
-            qDebug() << "Starte BVS-Service...:" << process.processId();
-            qDebug() << "Getting data from blockchain... Please be patient while daemon starts!";
-            b.show();
-            return app.exec();
-        }
-        else {
-            exit(0);
-        }
+        process.waitForFinished();
+        qDebug() << "Getting data from blockchain... Please be patient while daemon starts!";
     }
+
+    b.show();
+    return app.exec();
 }
