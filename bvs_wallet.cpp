@@ -3,6 +3,7 @@
 #include "ausfuehrendialog.h"
 #include "projekteauswahl.h"
 #include "settingsdialog.h"
+#include "ballotformwidget.h"
 #include <QDebug>
 #include <QCloseEvent>
 
@@ -110,7 +111,8 @@ void BVS_Wallet::closeEvent()
 
 void BVS_Wallet::on_action_Stimmzettel_triggered()
 {
-
+    BallotFormWidget *ballotform = new BallotFormWidget;
+    ballotform->show();
 }
 
 void BVS_Wallet::projectOpen() {

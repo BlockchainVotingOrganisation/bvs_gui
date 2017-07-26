@@ -14,10 +14,11 @@ SOURCES += \
     settingsdialog.cpp \
     Classes/Domain/Model/node.cpp \
     Classes/Controller/nodecontroller.cpp \
-    Classes/Domain/Model/ballot.cpp \
     Classes/Service/libgnupg.cpp \
     Classes/Controller/ballotcontroller.cpp \
-    Classes/Domain/ballotrepository.cpp
+    Classes/Domain/ballotrepository.cpp \
+    ballotformwidget.cpp \
+    Classes/Service/convert.cpp
 
 HEADERS += \
     bvs_wallet.h \
@@ -29,16 +30,18 @@ HEADERS += \
     settingsdialog.h \
     Classes/Domain/Model/node.h \
     Classes/Controller/nodecontroller.h \
-    Classes/Domain/Model/ballot.h \
     Classes/Service/libgnupg.h \
     Classes/Controller/ballotcontroller.h \
-    Classes/Domain/ballotrepository.h
+    Classes/Domain/ballotrepository.h \
+    ballotformwidget.h \
+    Classes/Service/convert.h
 
 FORMS += \
     bvs_wallet.ui \
     ausfuehrendialog.ui \
     projekteauswahl.ui \
-    settingsdialog.ui
+    settingsdialog.ui \
+    ballotformwidget.ui
 
 RESOURCES += \
     terminal.qrc
