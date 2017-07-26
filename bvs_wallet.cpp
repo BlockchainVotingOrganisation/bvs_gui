@@ -30,6 +30,12 @@ BVS_Wallet::BVS_Wallet(QStringList args, QWidget *parent) :
             blockchain = argBlockchain[1];
         }
 //        ui->listWidget->addItem(args.at(i));
+        if (args.at(i) == "-debug") {
+            qDebug() << "\nArgs:" << args.length() << "";
+            for(int j = 0; j < args.length(); j++) {
+                qDebug() << "args[" << j << "] = " << args.at(j) << "";
+            }
+        }
     }
 }
 
@@ -59,16 +65,7 @@ void BVS_Wallet::on_action_Ausf_hren_triggered()
  */
 void BVS_Wallet::on_actionWahl_ffnen_triggered()
 {
-    ProjekteAuswahl *p = new ProjekteAuswahl(this->args);
-    p->show();
-
-    if (p->exec()==QDialog::Accepted) {
-        QString project = p->getProject();
-        if (project != "")
-        {
-            ui->label->setText(project);
-        }
-    }
+    this->projectOpen();
 }
 
 /**
@@ -83,18 +80,9 @@ void BVS_Wallet::on_action_Beenden_triggered()
 /**
  * @brief BVS_Wallet::on_actionAuswaehlen_triggered
  */
-void BVS_Wallet::on_actionAuswaehlen_triggered()
+void BVS_Wallet::on_actionAuswaehlen_triggered()//    ProjekteAuswahl *p = new ProjekteAuswahl(this->args);
 {
-    ProjekteAuswahl *p = new ProjekteAuswahl(this->args);
-    p->show();
-
-    if (p->exec()==QDialog::Accepted) {
-        QString project = p->getProject();
-        ui->label->setText(project);
-
-        // soll Liste aus controller-showAction abrufen...
-        ui->listWidget->addItems(repository->findAllItems(this->args, project));
-    }
+    this->projectOpen();
 }
 
 /**
@@ -111,17 +99,36 @@ void BVS_Wallet::on_actionEinstellungen_triggered()
  */
 void BVS_Wallet::closeEvent()
 {
-//    for(int i = 0; i < this->args.length(); i++) {
-//         qDebug() << this->args.at(i);
-//    }
+    for(int i = 0; i < this->args.length(); i++) {
+         qDebug() << this->args.at(i);
+    }
 //    qDebug() << "Anwendung beenden - Blockchain: ";
     NodeController nc;
     int i = nc.stopDaemon(args);
-    qDebug() << "Anwendung beenden...";
-    qDebug() <<  "Status:" << i;
+    qDebug() << "Anwendung beenden Status:" << i;
 }
 
 void BVS_Wallet::on_action_Stimmzettel_triggered()
 {
 
+}
+
+void BVS_Wallet::projectOpen() {
+    ProjekteAuswahl *p = new ProjekteAuswahl(this->args);
+    p->show();
+
+    QString blockchain;
+
+    for(int i = 0; i < args.length(); i++) {
+        QStringList argBlockchain= args.at(i).split("=");
+        if (argBlockchain[0] == "-blockchain") {
+            blockchain = argBlockchain[1];
+        }
+    }
+
+    if (p->exec()==QDialog::Accepted) {
+        QString project = p->getProject();
+        ui->label->setText(project);
+        ui->listWidget->addItems(repository->findAllItems(this->args, project));
+    }
 }
