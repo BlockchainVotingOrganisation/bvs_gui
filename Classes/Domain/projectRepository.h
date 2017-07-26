@@ -20,6 +20,7 @@ private:
     QStringList projects;
     QStringList items;
     QStringList keys;
+    QString blockchain, path;
 };
 
 #endif // PROJECTREPOSITORY_H
