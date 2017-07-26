@@ -9,32 +9,34 @@ SOURCES += \
     ausfuehrendialog.cpp \
     projekteauswahl.cpp \
     Classes/Domain/Model/project.cpp \
-    Classes/Domain/projectRepository.cpp \
     Classes/Controller/projectcontroller.cpp \
     settingsdialog.cpp \
     Classes/Domain/Model/node.cpp \
     Classes/Controller/nodecontroller.cpp \
     Classes/Service/libgnupg.cpp \
     Classes/Controller/ballotcontroller.cpp \
-    Classes/Domain/ballotrepository.cpp \
     ballotformwidget.cpp \
-    Classes/Service/convert.cpp
+    Classes/Service/convert.cpp \
+    Classes/Domain/Repository/ballotrepository.cpp \
+    Classes/Domain/Repository/projectRepository.cpp \
+    Classes/Service/Rpc/rpcclient.cpp
 
 HEADERS += \
     bvs_wallet.h \
     ausfuehrendialog.h \
     projekteauswahl.h \
     Classes/Domain/Model/project.h \
-    Classes/Domain/projectRepository.h \
     Classes/Controller/projectController.h \
     settingsdialog.h \
     Classes/Domain/Model/node.h \
     Classes/Controller/nodecontroller.h \
     Classes/Service/libgnupg.h \
     Classes/Controller/ballotcontroller.h \
-    Classes/Domain/ballotrepository.h \
     ballotformwidget.h \
-    Classes/Service/convert.h
+    Classes/Service/convert.h \
+    Classes/Domain/Repository/ballotrepository.h \
+    Classes/Domain/Repository/projectRepository.h \
+    Classes/Service/Rpc/rpcclient.h
 
 FORMS += \
     bvs_wallet.ui \

@@ -3,7 +3,7 @@
 
 #include "Classes/Domain/Model/project.h"
 #include "Classes/Controller/projectController.h"
-#include "Classes/Domain/projectRepository.h"
+#include "Classes/Domain/Repository/projectRepository.h"
 
 #include <QtCore/qglobal.h>
 

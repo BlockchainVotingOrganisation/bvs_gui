@@ -10,7 +10,7 @@
 #include "Classes/Domain/Model/node.h"
 #include "Classes/Controller/nodecontroller.h"
 #include "Classes/Controller/projectController.h"
-#include "Classes/Domain/projectRepository.h"
+#include "Classes/Domain//Repository/projectRepository.h"
 
 namespace Ui {
   class BVS_Wallet;
