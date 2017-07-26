@@ -21,7 +21,7 @@ public:
 
 private:
     ProjectRepository *repository;
-    QStringList listBallotsAction(QStringList args);
+    QStringList listBallotsAction(QString project);
 };
 
 #endif // PROJECTCONTROLLER_H
