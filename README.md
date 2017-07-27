@@ -1,5 +1,7 @@
 # bvs_gui - BVS Voting Client (QT)
 
+BVS QT-gui for Windows and Linux.
+
 ## Installation
 
 ### Prerequisites
