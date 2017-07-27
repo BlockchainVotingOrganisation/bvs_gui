@@ -52,7 +52,7 @@ QStringList ProjectRepository::findAllProjects(QStringList args) {
     if (!jsonDocument.isNull())
     {
         if (jsonDocument.isArray()) {
-            jsonDocument = QJsonDocument::fromJson(stdOut);
+//            jsonDocument = QJsonDocument::fromJson(stdOut);
             QJsonArray jsonArray = jsonDocument.array();
             QJsonObject streams[jsonArray.size()];
             for (int i = 0; i < jsonArray.size(); i++) {

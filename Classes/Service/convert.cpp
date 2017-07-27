@@ -1,4 +1,4 @@
-
+#include <QByteArray>
 #include <QString>
 #include "convert.h"
 #include <QtDebug>
@@ -9,14 +9,8 @@ Convert::Convert()
 }
 
 QString Convert::hex2bin(QString hexStr) {
-//    qDebug()<<"Input (HEX)       = " << hexStr;
-    bool ok = false;
-    int iVal = hexStr.toInt(&ok,16);
-    QString binStr = hexStr.setNum(iVal, 2);
-
-//    qDebug()<<"Convert to Int    = " << QString::number(iVal);
-//    qDebug()<<"Convert to Binary = " << binStr;
-
+    QString binStr = QString::fromLocal8Bit(QByteArray::fromHex(hexStr.toLatin1()));
+//    QByteArray binStr = QByteArray::fromHex(hexStr.toLatin1());
     return binStr;
 }
 

@@ -1,6 +1,9 @@
 #include <QDebug>
 #include <QString>
-
+#include <QJsonDocument>
+#include <QProcess>
+#include <QJsonArray>
+#include <QJsonObject>
 #include "ballotformwidget.h"
 #include "ui_ballotformwidget.h"
 #include "Classes/Controller/projectController.h"
@@ -38,7 +41,6 @@ BallotFormWidget::BallotFormWidget(QStringList args, QWidget *parent) :
 
     QString ballot;
     for (int i = 0; i < items.length(); i++) {
-
         QString item = items.at(i);
         if (item.contains("Ballot")) {
             QStringList itemArray = items.at(i).split(":");
@@ -46,7 +48,30 @@ BallotFormWidget::BallotFormWidget(QStringList args, QWidget *parent) :
             ballot = convert.hex2bin(itemArray[1]);
         }
     }
-    ui->listWidget->insertItem(0,ballot);
+
+    QByteArray stdOut;
+    stdOut = ballot.toLatin1();
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(stdOut);
+    QStringList ballotList;
+    if (!jsonDocument.isNull())
+    {
+        if (jsonDocument.isObject()) {
+//            jsonDocument = QJsonDocument::fromJson(stdOut);
+//            QJsonArray jsonArray = jsonDocument.array();
+//            QJsonObject streams[jsonArray.size()];
+
+            ballotList.append(jsonDocument.toJson());
+
+
+        }
+        else {
+            qDebug() << "JSON is not an array!";
+        }
+    }
+    else {
+        qDebug() << "JSON is null!";
+    }
+    ui->listWidget->insertItems(9, ballotList);
 }
 
 BallotFormWidget::~BallotFormWidget()
