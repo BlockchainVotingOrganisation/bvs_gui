@@ -19,7 +19,9 @@ SOURCES += \
     Classes/Service/convert.cpp \
     Classes/Domain/Repository/ballotrepository.cpp \
     Classes/Domain/Repository/projectRepository.cpp \
-    Classes/Service/Rpc/rpcclient.cpp
+    Classes/Service/Rpc/rpcclient.cpp \
+    Classes/Domain/Model/ballot.cpp \
+    Classes/Domain/Model/option.cpp
 
 HEADERS += \
     bvs_wallet.h \
@@ -36,7 +38,9 @@ HEADERS += \
     Classes/Service/convert.h \
     Classes/Domain/Repository/ballotrepository.h \
     Classes/Domain/Repository/projectRepository.h \
-    Classes/Service/Rpc/rpcclient.h
+    Classes/Service/Rpc/rpcclient.h \
+    Classes/Domain/Model/ballot.h \
+    Classes/Domain/Model/option.h
 
 FORMS += \
     bvs_wallet.ui \

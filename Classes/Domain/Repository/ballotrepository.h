@@ -3,6 +3,8 @@
 
 #include <QtCore/qglobal.h>
 #include <QString>
+#include <QJsonDocument>
+
 #include "projectRepository.h"
 //#include "Classes/Domain/Model/ballot.h"
 
@@ -11,8 +13,8 @@ class BallotRepository
 public:
     BallotRepository();
 
-    QStringList findAllBallots(QStringList args, QString project);
-    QStringList findAllOptions(QString ballot);
+    QJsonDocument findBallot(QStringList args, QString project);
+    QStringList findAllOptions(QJsonDocument ballot);
 private:
     ProjectRepository *projectRepository;
 

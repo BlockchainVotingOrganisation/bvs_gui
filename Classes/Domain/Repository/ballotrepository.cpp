@@ -1,5 +1,8 @@
 #include <QByteArray>
 #include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonValue>
+#include <QJsonValueRef>
 #include <QDebug>
 
 #include "ballotrepository.h"
@@ -11,7 +14,7 @@ BallotRepository::BallotRepository()
 
 }
 
-QStringList BallotRepository::findAllBallots(QStringList args, QString project) {
+QJsonDocument BallotRepository::findBallot(QStringList args, QString project) {
     ProjectRepository *projectRepository;
     QStringList items = projectRepository->findAllItems(args, project);
     QString ballot;
@@ -28,18 +31,34 @@ QStringList BallotRepository::findAllBallots(QStringList args, QString project) 
     QByteArray stdOut;
     stdOut = ballot.toLatin1();
     QJsonDocument jsonDocument = QJsonDocument::fromJson(stdOut);
-    QStringList ballotList;
-    if (!jsonDocument.isNull())
+
+    if (jsonDocument.isNull())
     {
-        if (jsonDocument.isObject()) {
-            ballotList.append(jsonDocument.toJson());
-        }
-        else {
-            qDebug() << "JSON is not an object!";
-        }
-    }
-    else {
         qDebug() << "JSON is null!";
     }
-    return ballotList;
+
+    return jsonDocument;
+}
+
+QStringList BallotRepository::findAllOptions(QJsonDocument ballot) {
+
+    QStringList options;
+
+    if (ballot.isObject())
+    {
+        qDebug() << "JSON is object:" << ballot.toJson();
+        QJsonObject ballotObject = ballot.object();
+        for (int i = 0; i < ballot.object().keys().count(); i++) {
+            QString key = ballotObject.keys().at(i);
+            if (key == "name") {
+                QString value = ballotObject.value(key).toString().toUtf8();
+                options.append(value);
+            }
+            else if (key == "options") {
+                options.append(" ");
+                options.append("Options:");
+            }
+        }
+    }
+    return options;
 }
