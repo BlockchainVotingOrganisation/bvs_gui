@@ -6,6 +6,9 @@
 #include <QStringList>
 #include "Classes/Domain/Model/project.h"
 
+/**
+ * @brief The ProjectRepository class - Multichain-Repository: get Projects from MultiChain streams
+ */
 class ProjectRepository
 {
 

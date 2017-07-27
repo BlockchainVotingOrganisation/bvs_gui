@@ -55,7 +55,12 @@
 #include <QDebug>
 #include <getopt.h>
 
-
+/**
+ * @brief qMain
+ * @param argc - number of args
+ * @param argv - array of args
+ * @return - returns 0 if exit normal, otherwise 1.
+ */
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv); // ->this process
