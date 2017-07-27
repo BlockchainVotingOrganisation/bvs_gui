@@ -6,8 +6,6 @@
 #include <QProcess>
 #include <qdebug.h>
 
-
-
 AusfuehrenDialog::AusfuehrenDialog(QStringList args, QWidget *parent) :
   QDialog(parent),
   ui(new Ui::AusfuehrenDialog)
@@ -29,20 +27,15 @@ void AusfuehrenDialog::on_pushButton_clicked()
 
     for(int i = 0; i < args.length(); i++) {
 
-
-
         QStringList argBlockchain = this->args[i].split("=");
-
 
         if (this->args[i].contains("blockchain=") == true) {
             blockchain = argBlockchain[1];
-            qDebug() << "BC:" << blockchain;
+//            qDebug() << "BC:" << blockchain;
         }
-
-
         else if (this->args[i].contains("path=") == true) {
             path = argBlockchain[1];
-            qDebug() << "path" << path;
+//            qDebug() << "path" << path;
         }
     }
 
@@ -52,6 +45,10 @@ void AusfuehrenDialog::on_pushButton_clicked()
     process.start(path + "multichain-cli", arguments);
     process.waitForFinished();
 
-    QString out = process.readAllStandardOutput();
+    QByteArray stdOut = process.readAllStandardOutput();
+
+    qDebug() << stdOut;
+    QString out = stdOut;
+
     ui->plainTextEdit->appendPlainText(out);
 }
