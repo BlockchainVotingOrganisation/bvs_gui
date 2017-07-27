@@ -88,7 +88,7 @@ void BVS_Wallet::on_actionWahl_ffnen_triggered()
 void BVS_Wallet::on_action_Beenden_triggered()
 {
     closeEvent();
-//    exit(0);
+    exit(0);
 }
 
 /**
