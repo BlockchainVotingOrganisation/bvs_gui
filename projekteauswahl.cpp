@@ -42,6 +42,6 @@ QString ProjekteAuswahl::getProject() {
 
 QString ProjekteAuswahl::on_projectListe_itemSelectionChanged()
 {
-    qDebug() << "Lade Stream" << ui->projectListe->selectedItems().at(0)->text() + ".";
+//    qDebug() << "Lade Stream" << ui->projectListe->selectedItems().at(0)->text() + ".";
     return ui->projectListe->selectedItems().at(0)->text();
 }

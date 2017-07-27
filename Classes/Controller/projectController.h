@@ -13,7 +13,7 @@ public:
     ProjectController();
     QStringList listAction(QStringList args);
 
-    Project showAction(QString project);
+    Project showAction(QStringList args, QString projectName);
     Project newAction();
     Project createAction();
     Project editAction(QString project);

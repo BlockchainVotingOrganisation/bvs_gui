@@ -49,11 +49,12 @@
 **
 ****************************************************************************/
 
+#include <unistd.h>
 #include <QApplication>
 #include <QProcess>
 #include "bvs_wallet.h"
 #include <QDebug>
-#include <getopt.h>
+
 
 /**
  * @brief qMain
@@ -103,12 +104,12 @@ int main(int argc, char *argv[])
     arguments.append(blockchain + "@" + server + ":" + port);
     arguments.append("-daemon");
 
-
     if (multichain == true) {
         QProcess process; // ->Multichain daemon process
         process.startDetached(cmd, arguments);
-        process.waitForFinished();
-        qDebug() << "Getting data from blockchain... Please be patient while daemon starts!";
+        process.waitForFinished(99999);
+        qDebug() << "Getting data from blockchain... Please be patient while daemon starts! (30s)";
+        sleep(1);
     }
 
     b.show();

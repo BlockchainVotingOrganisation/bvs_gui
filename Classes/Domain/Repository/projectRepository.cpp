@@ -83,6 +83,7 @@ QStringList ProjectRepository::findAllItems(QStringList args, QString project) {
     QByteArray stdOut;
     QString blockchain, path;
 
+
     for(int i = 0; i < args.length(); i++) {
         QString arg = args[i];
         QStringList argBlockchain= args.at(i).split("=");
@@ -96,6 +97,8 @@ QStringList ProjectRepository::findAllItems(QStringList args, QString project) {
     }
     arguments.append(blockchain);
     arguments.append("subscribe");
+    arguments.append("false");
+
     process.start(path + "multichain-cli", arguments);
 
     process.waitForFinished();
@@ -109,7 +112,6 @@ QStringList ProjectRepository::findAllItems(QStringList args, QString project) {
 
     process.start(path + "multichain-cli", arguments);
     process.waitForFinished();
-
 
     stdOut.append(process.readAllStandardOutput());
 

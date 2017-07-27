@@ -30,12 +30,25 @@ BVS_Wallet::BVS_Wallet(QStringList args, QWidget *parent) :
         if (argBlockchain[0] == "-blockchain") {
             blockchain = argBlockchain[1];
         }
-//        ui->listWidget->addItem(args.at(i));
+
         if (args.at(i) == "-debug") {
             qDebug() << "\nArgs:" << args.length() << "";
             for(int j = 0; j < args.length(); j++) {
                 qDebug() << "args[" << j << "] = " << args.at(j) << "";
             }
+        }
+
+        if (argBlockchain[0] == "-project") {
+//            qDebug() << "args[" << i << "] = " << args.at(i) << "";
+            this->setWindowTitle(argBlockchain[1]);
+            ui->label->setText(argBlockchain[1]);
+
+            QStringList items;
+            items = repository->findAllItems(args, argBlockchain[1]);
+            if (items.length() > 0) {
+                ui->listWidget->addItems(items);
+            }
+
         }
     }
 }
@@ -75,7 +88,7 @@ void BVS_Wallet::on_actionWahl_ffnen_triggered()
 void BVS_Wallet::on_action_Beenden_triggered()
 {
     closeEvent();
-    exit(0);
+//    exit(0);
 }
 
 /**
@@ -100,21 +113,27 @@ void BVS_Wallet::on_actionEinstellungen_triggered()
  */
 void BVS_Wallet::closeEvent()
 {
-    for(int i = 0; i < this->args.length(); i++) {
-         qDebug() << this->args.at(i);
-    }
-//    qDebug() << "Anwendung beenden - Blockchain: ";
-    NodeController nc;
-    int i = nc.stopDaemon(args);
-    qDebug() << "Anwendung beenden Status:" << i;
+//    for(int i = 0; i < this->args.length(); i++) {
+//         qDebug() << this->args.at(i);
+//    }
+////    qDebug() << "Anwendung beenden - Blockchain: ";
+//    NodeController nc;
+//    int i = nc.stopDaemon(args);
+//    qDebug() << "Anwendung beenden Status:" << i;
 }
 
+/**
+ * @brief BVS_Wallet::on_action_Stimmzettel_triggered
+ */
 void BVS_Wallet::on_action_Stimmzettel_triggered()
 {
-    BallotFormWidget *ballotform = new BallotFormWidget;
+    BallotFormWidget *ballotform = new BallotFormWidget(this->args);
     ballotform->show();
 }
 
+/**
+ * @brief BVS_Wallet::projectOpen
+ */
 void BVS_Wallet::projectOpen() {
     ProjekteAuswahl *p = new ProjekteAuswahl(this->args);
     p->show();
@@ -130,7 +149,12 @@ void BVS_Wallet::projectOpen() {
 
     if (p->exec()==QDialog::Accepted) {
         QString project = p->getProject();
+        if (args.contains("project") == false) {
+            args.append("-project=" + project);
+        }
+
         ui->label->setText(project);
+        ui->listWidget->clear();
         ui->listWidget->addItems(repository->findAllItems(this->args, project));
     }
 }

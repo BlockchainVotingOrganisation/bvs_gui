@@ -12,11 +12,13 @@ class BallotFormWidget : public QDialog
     Q_OBJECT
 
 public:
-    explicit BallotFormWidget(QWidget *parent = 0);
+    explicit BallotFormWidget(QStringList args, QWidget *parent = 0);
     ~BallotFormWidget();
 
 private:
     Ui::BallotFormWidget *ui;
+
+    QStringList args;
 };
 
 #endif // BALLOTFORMWIDGET_H
