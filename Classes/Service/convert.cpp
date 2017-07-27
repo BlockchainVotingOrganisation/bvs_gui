@@ -9,13 +9,13 @@ Convert::Convert()
 }
 
 QString Convert::hex2bin(QString hexStr) {
-    qDebug()<<"Input (HEX)       = " << hexStr;
-    bool ok;
+//    qDebug()<<"Input (HEX)       = " << hexStr;
+    bool ok = false;
     int iVal = hexStr.toInt(&ok,16);
     QString binStr = hexStr.setNum(iVal, 2);
 
-    qDebug()<<"Convert to Int    = " << QString::number(iVal);
-    qDebug()<<"Convert to Binary = " << binStr;
+//    qDebug()<<"Convert to Int    = " << QString::number(iVal);
+//    qDebug()<<"Convert to Binary = " << binStr;
 
     return binStr;
 }

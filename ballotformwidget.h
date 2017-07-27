@@ -19,6 +19,7 @@ private:
     Ui::BallotFormWidget *ui;
 
     QStringList args;
+    QStringList items;
 };
 
 #endif // BALLOTFORMWIDGET_H
