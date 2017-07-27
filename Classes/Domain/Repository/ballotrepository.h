@@ -3,7 +3,7 @@
 
 #include <QtCore/qglobal.h>
 #include <QString>
-#include "Classes/Domain/Model/ballot.h"
+//#include "Classes/Domain/Model/ballot.h"
 
 class BallotRepository
 {
@@ -13,7 +13,7 @@ public:
 
     QStringList findAllBallots(QString project);
     QStringList findAllOptions(QString ballot);
-    Ballot findByReference(QString project);
+//    Ballot findByReference(QString project);
 };
 
 #endif // BALLOTREPOSITORY_H
