@@ -72,13 +72,26 @@ Ballot BallotRepository::findBallot(QStringList args, QString project) {
                 for (int j = 0; j < myOptions.keys().count(); j++) {
 //                    qDebug() << "option" << j << myOptions.keys().at(j) << ":" <<  myOptions.value(myOptions.keys().at(j));
                     QByteArray myvalue;
+                    QString string;
                     myvalue = myOptions.value(myOptions.keys().at(j)).toString().replace("\\\\\\","\\\\").toLatin1();
                     QJsonObject option = QJsonDocument::fromJson(myvalue).object();
                     qDebug() << "\n\noption" << j << " " << myvalue;
                     for (int k = 0; k < option.keys().count(); k++) {
-                        qDebug()  << "data:" << option.keys().at(k) << ":" <<  option.value(option.keys().at(k));
+                        qDebug()  << "data:" << option.keys().at(k) << ":" << option.value(option.keys().at(k));
+
+                        if (option.keys().at(k) == "name") {
+                            QJsonValue key = option.value(option.keys().at(k));
+                            string = string + key.toString();
+                        }
+//                        else if (option.keys().at(k) == "walletaddress") {
+//                            QJsonValue value = option.value(option.keys().at(k));
+//                            string = string + " " + value.toString();
+//                        }
+
+                        string.append(" ");
+
                     }
-                    options.append(myOptions.value(myOptions.keys().at(j)).toString().replace("\\\\\\","\\\\"));
+                    options.append(string);
                 }
                 ballot.setOptions(options);
             }

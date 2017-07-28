@@ -16,7 +16,7 @@ public:
     void setBallot(Ballot ballot);
 
     QString getWalletAddress();
-    void setWalletAddress();
+    void setWalletAddress(QString walletAdress);
 
 private:
 

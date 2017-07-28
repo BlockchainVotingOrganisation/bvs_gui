@@ -50,11 +50,15 @@ BallotFormWidget::BallotFormWidget(QStringList args, QWidget *parent) :
     for (int i = 0; i < ballot.getOptions().length(); i++) {
         QRadioButton *button = new QRadioButton(ballot.getOptions().at(i), this);
         button->setLayoutDirection(Qt::RightToLeft);
+        button->setStyleSheet("font-size: 20px;");
+//        QAction action;
+//        button->addAction(action);
+
         ui->gridLayout->addWidget(button);
     }
 
     // Konsolenausgabe!
-    ui->listWidget->addItems(controller->ballotItemList(ballot));
+//    ui->listWidget->addItems(controller->ballotItemList(ballot));
 }
 
 BallotFormWidget::~BallotFormWidget()
@@ -62,3 +66,8 @@ BallotFormWidget::~BallotFormWidget()
     delete ui;
 }
 
+
+void BallotFormWidget::on_buttonBox_accepted()
+{
+
+}

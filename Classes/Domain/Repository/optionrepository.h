@@ -9,7 +9,7 @@ class OptionRepository
 public:
     OptionRepository();
 
-    Option findOptionByJsonStr(QJsonDocument option);
+    Option findOptionByJsonStr(QJsonDocument optionJdoc);
 };
 
 #endif // OPTIONREPOSITORY_H
