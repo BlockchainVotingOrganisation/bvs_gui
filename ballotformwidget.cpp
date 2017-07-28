@@ -10,6 +10,7 @@
 #include "Classes/Domain/Repository/projectRepository.h"
 #include "Classes/Domain/Repository/ballotRepository.h"
 #include "Classes/Service/convert.h"
+#include "Classes/Domain/Model/ballot.h"
 
 BallotFormWidget::BallotFormWidget(QStringList args, QWidget *parent) :
     QDialog(parent),
@@ -38,6 +39,7 @@ BallotFormWidget::BallotFormWidget(QStringList args, QWidget *parent) :
 
     this->setWindowTitle(project);
     BallotRepository *ballotRepository;
+//    ProjectRepository *projectRepository;
     Ballot ballot;
     ballot = ballotRepository->findBallot(args, project);
 
@@ -61,7 +63,7 @@ BallotFormWidget::BallotFormWidget(QStringList args, QWidget *parent) :
       * addItems soll auf Ballot zugreifen
       *
       */
-    ui->listWidget->addItems(ballotRepository->findOptionsByProjectName(project));
+    ui->listWidget->addItems(ballot.getOptions());
 }
 
 BallotFormWidget::~BallotFormWidget()

@@ -1,4 +1,6 @@
 #include "ballot.h"
+#include "Classes/Domain/Repository/ballotrepository.h"
+#include <QObject>
 
 Ballot::Ballot()
 {
@@ -34,6 +36,14 @@ QString Ballot::getText() {
 
 void Ballot::setText(QString text) {
     this->text = text;
+}
+
+QStringList Ballot::getOptions() {
+    return this->ballotoptions;
+}
+
+void Ballot::setOptions(QStringList options) {
+    this->ballotoptions = options;
 }
 
 

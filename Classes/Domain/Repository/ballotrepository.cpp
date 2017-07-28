@@ -48,6 +48,7 @@ Ballot BallotRepository::findBallot(QStringList args, QString project) {
             QString key = ballotObject.keys().at(i);
             QString value = ballotObject.value(key).toString();
 
+
             if (key == "uid") {
                 QString valueStr = value.setNum(value.toInt());
                 ballot.setUid(valueStr);
@@ -65,31 +66,49 @@ Ballot BallotRepository::findBallot(QStringList args, QString project) {
                 qDebug() << "text" << value;
                 ballot.setText(value);
             }
+            if (key == "options") {
+                QStringList options;
+                QJsonObject myOptions = ballotObject.value(key).toObject();
+                for (int j = 0; j < myOptions.keys().count(); j++) {
+//                    qDebug() << "option" << j << myOptions.keys().at(j) << ":" <<  myOptions.value(myOptions.keys().at(j));
+                    QByteArray myvalue;
+                    myvalue = myOptions.value(myOptions.keys().at(j)).toString().replace("\\\\\\","\\\\").toLatin1();
+                    QJsonObject option = QJsonDocument::fromJson(myvalue).object();
+                    qDebug() << "\n\noption" << j << " " << myvalue;
+                    for (int k = 0; k < option.keys().count(); k++) {
+                        qDebug()  << "data:" << option.keys().at(k) << ":" <<  option.value(option.keys().at(k));
+                    }
+                    options.append(myOptions.value(myOptions.keys().at(j)).toString().replace("\\\\\\","\\\\"));
+                }
+                ballot.setOptions(options);
+            }
         }
     }
     return ballot;
 }
 
-QStringList BallotRepository::findOptionsByProjectName(QString ballot) {
+/**
+ * @brief BallotRepository::findOptionsByProjectName
+ * @param ballot
+ * @return
+ */
+QStringList BallotRepository::findOptionsByBallotName(QString ballot) {
 
     QStringList options;
-    options << "Kandidat \"Eins\"" << "Kandidat \"Zwei\"" << "Kandidat \"Drei\"";
+    options << "\n" + ballot << "Kandidat \"Eins\"" << "Kandidat \"Zwei\"" << "Kandidat \"Drei\"";
 
-//    if (ballot.isObject())
-//    {
-//        qDebug() << "JSON is object:" << ballot.toJson();
-//        QJsonObject ballotObject = ballot.object();
-//        for (int i = 0; i < ballot.object().keys().count(); i++) {
-//            QString key = ballotObject.keys().at(i);
-//            if (key == "name") {
-//                QString value = ballotObject.value(key).toString().toUtf8();
-//                options.append(value);
-//            }
-//            else if (key == "options") {
-//                options.append(" ");
-//                options.append("Options:");
-//            }
-//        }
-//    }
+    // Get data from stream or from findBallot above?
+
+
+    return options;
+}
+
+QStringList BallotRepository::findOptionsByBallot(Ballot ballot) {
+    QStringList options;
+    options << "\n" + ballot.getName() + ":" << "Kandidat \"Eins\"" << "Kandidat \"Zwei\"" << "Kandidat \"Drei\"";
+
+    // Get data from stream or from findBallot above?
+
+
     return options;
 }

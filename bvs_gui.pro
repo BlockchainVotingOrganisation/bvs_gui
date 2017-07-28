@@ -56,4 +56,5 @@ target.path = $$[QT_INSTALL_EXAMPLES]/serialport/terminal
 INSTALLS += target
 
 DISTFILES += \
-    README.md
+    README.md \
+    .gitignore

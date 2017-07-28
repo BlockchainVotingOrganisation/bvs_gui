@@ -2,6 +2,7 @@
 #define BALLOT_H
 
 #include <QString>
+#include <QStringList>
 
 class Ballot
 {
@@ -20,12 +21,16 @@ public:
     QString getText();
     void setText(QString text);
 
+    QStringList getOptions();
+    void setOptions(QStringList options);
+
 private:
 
     QString uid;
     QString name;
     QString logo;
     QString text;
+    QStringList ballotoptions;
 };
 
 #endif // BALLOT_H
