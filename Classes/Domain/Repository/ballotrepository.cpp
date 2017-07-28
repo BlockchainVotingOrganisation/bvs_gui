@@ -87,28 +87,5 @@ Ballot BallotRepository::findBallot(QStringList args, QString project) {
     return ballot;
 }
 
-/**
- * @brief BallotRepository::findOptionsByProjectName
- * @param ballot
- * @return
- */
-QStringList BallotRepository::findOptionsByBallotName(QString ballot) {
-
-    QStringList options;
-    options << "\n" + ballot << "Kandidat \"Eins\"" << "Kandidat \"Zwei\"" << "Kandidat \"Drei\"";
-
-    // Get data from stream or from findBallot above?
 
 
-    return options;
-}
-
-QStringList BallotRepository::findOptionsByBallot(Ballot ballot) {
-    QStringList options;
-    options << "\n" + ballot.getName() + ":" << "Kandidat \"Eins\"" << "Kandidat \"Zwei\"" << "Kandidat \"Drei\"";
-
-    // Get data from stream or from findBallot above?
-
-
-    return options;
-}

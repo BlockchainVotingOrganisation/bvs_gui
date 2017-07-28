@@ -39,11 +39,11 @@ void Ballot::setText(QString text) {
 }
 
 QStringList Ballot::getOptions() {
-    return this->ballotoptions;
+    return this->options;
 }
 
 void Ballot::setOptions(QStringList options) {
-    this->ballotoptions = options;
+    this->options = options;
 }
 
 

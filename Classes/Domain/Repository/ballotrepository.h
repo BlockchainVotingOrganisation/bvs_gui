@@ -14,8 +14,6 @@ public:
     BallotRepository();
 
     Ballot findBallot(QStringList args, QString project);
-    QStringList findOptionsByBallotName(QString ballot);
-    QStringList findOptionsByBallot(Ballot ballot);
 
 private:
     ProjectRepository *projectRepository;

@@ -30,7 +30,7 @@ private:
     QString name;
     QString logo;
     QString text;
-    QStringList ballotoptions;
+    QStringList options;
 };
 
 #endif // BALLOT_H
