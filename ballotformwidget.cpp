@@ -41,9 +41,9 @@ BallotFormWidget::BallotFormWidget(QStringList args, QWidget *parent) :
     Ballot ballot;
     ballot = ballotRepository->findBallot(args, project);
 
-//    if (ballot.getUid > 0) {
-//        ui->listWidget->insertItems(9, ballot.getUid());
-//    }
+    if (ballot.getUid().isEmpty() == false) {
+        ui->listWidget->addItem(ballot.getUid());
+    }
 
     if (ballot.getName() != "") {
         ui->listWidget->addItem(ballot.getName());

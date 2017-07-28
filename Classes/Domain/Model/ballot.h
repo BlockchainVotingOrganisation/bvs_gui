@@ -8,8 +8,8 @@ class Ballot
 public:
     Ballot();
 
-    void setUid(int uid);
-    int getUid();
+    void setUid(QString uid);
+    QString getUid();
 
     QString getName();
     void setName(QString name);
@@ -22,7 +22,7 @@ public:
 
 private:
 
-    int uid;
+    QString uid;
     QString name;
     QString logo;
     QString text;

@@ -4,7 +4,11 @@ Ballot::Ballot()
 {
 
 }
-void Ballot::setUid(int uid) {
+
+QString Ballot::getUid() {
+    return this->uid;
+}
+void Ballot::setUid(QString uid) {
     this->uid = uid;
 }
 

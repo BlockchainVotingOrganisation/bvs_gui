@@ -49,18 +49,19 @@ Ballot BallotRepository::findBallot(QStringList args, QString project) {
             QString value = ballotObject.value(key).toString();
 
             if (key == "uid") {
-                ballot.setUid(value.toInt());
-                qDebug() << "uid" << value;
+                QString valueStr = value.setNum(value.toInt());
+                ballot.setUid(valueStr);
+                qDebug() << "uid" << value.toInt();
             }
-            else if (key == "name") {
+            if (key == "name") {
                 ballot.setName(value);
                 qDebug() << "name" << value;
             }
-            else if (key == "logo") {
+            if (key == "logo") {
                 ballot.setLogo(value);
                 qDebug() << "logo" << value;
             }
-            else if (key == "text") {
+            if (key == "text") {
                 qDebug() << "text" << value;
                 ballot.setText(value);
             }
