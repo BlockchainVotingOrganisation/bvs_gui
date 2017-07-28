@@ -70,25 +70,26 @@ Ballot BallotRepository::findBallot(QStringList args, QString project) {
     return ballot;
 }
 
-QStringList BallotRepository::findAllOptions(QJsonDocument ballot) {
+QStringList BallotRepository::findOptionsByProjectName(QString ballot) {
 
     QStringList options;
+    options << "Kandidat \"Eins\"" << "Kandidat \"Zwei\"" << "Kandidat \"Drei\"";
 
-    if (ballot.isObject())
-    {
-        qDebug() << "JSON is object:" << ballot.toJson();
-        QJsonObject ballotObject = ballot.object();
-        for (int i = 0; i < ballot.object().keys().count(); i++) {
-            QString key = ballotObject.keys().at(i);
-            if (key == "name") {
-                QString value = ballotObject.value(key).toString().toUtf8();
-                options.append(value);
-            }
-            else if (key == "options") {
-                options.append(" ");
-                options.append("Options:");
-            }
-        }
-    }
+//    if (ballot.isObject())
+//    {
+//        qDebug() << "JSON is object:" << ballot.toJson();
+//        QJsonObject ballotObject = ballot.object();
+//        for (int i = 0; i < ballot.object().keys().count(); i++) {
+//            QString key = ballotObject.keys().at(i);
+//            if (key == "name") {
+//                QString value = ballotObject.value(key).toString().toUtf8();
+//                options.append(value);
+//            }
+//            else if (key == "options") {
+//                options.append(" ");
+//                options.append("Options:");
+//            }
+//        }
+//    }
     return options;
 }

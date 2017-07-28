@@ -14,11 +14,11 @@ public:
     BallotRepository();
 
     Ballot findBallot(QStringList args, QString project);
-    QStringList findAllOptions(QJsonDocument ballot);
+    QStringList findOptionsByProjectName(QString ballot);
+
 private:
     ProjectRepository *projectRepository;
     Ballot ballot;
-
 };
 
 #endif // BALLOTREPOSITORY_H

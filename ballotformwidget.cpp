@@ -57,7 +57,11 @@ BallotFormWidget::BallotFormWidget(QStringList args, QWidget *parent) :
         ui->listWidget->addItem(ballot.getLogo());
     }
 
-//    ui->listWidget->insertItems(9, ballotRepository->findAllOptions(ballot));
+    /**
+      * addItems soll auf Ballot zugreifen
+      *
+      */
+    ui->listWidget->addItems(ballotRepository->findOptionsByProjectName(project));
 }
 
 BallotFormWidget::~BallotFormWidget()
