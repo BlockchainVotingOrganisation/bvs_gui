@@ -4,8 +4,11 @@
 #include <QProcess>
 #include <QJsonArray>
 #include <QJsonObject>
+#include <QRadioButton>
+
 #include "ballotformwidget.h"
 #include "ui_ballotformwidget.h"
+
 #include "Classes/Controller/projectController.h"
 #include "Classes/Domain/Repository/projectRepository.h"
 #include "Classes/Domain/Repository/ballotRepository.h"
@@ -41,10 +44,20 @@ BallotFormWidget::BallotFormWidget(QStringList args, QWidget *parent) :
     Ballot ballot;
     ballot = ballotRepository->findBallot(args, project);
     BallotController *controller;
+    ui->labelBallonName->setText(ballot.getName());
+    ui->textBrowser->setText(ballot.getText());
+
+    for (int i = 0; i < ballot.getOptions().length(); i++) {
+        QRadioButton *button = new QRadioButton(ballot.getOptions().at(i), this);
+        button->setLayoutDirection(Qt::RightToLeft);
+        ui->gridLayout->addWidget(button);
+    }
     ui->listWidget->addItems(controller->ballotList(ballot));
+
 }
 
 BallotFormWidget::~BallotFormWidget()
 {
     delete ui;
 }
+

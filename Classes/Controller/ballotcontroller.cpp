@@ -6,7 +6,7 @@ BallotController::BallotController()
 
 }
 /**
- * @brief BallotController::ballotList
+ * @brief BallotController::ballotList - als Ersatz für ShowAction TODO!
  * @param ballot
  * @return
  */

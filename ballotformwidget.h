@@ -16,6 +16,7 @@ public:
     explicit BallotFormWidget(QStringList args, QWidget *parent = 0);
     ~BallotFormWidget();
 
+
 private:
     Ui::BallotFormWidget *ui;
 
