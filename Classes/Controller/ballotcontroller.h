@@ -12,7 +12,7 @@ public:
     BallotController();
 
 //    QStringList listAction(QString project);
-    QStringList ballotList(Ballot ballot); // showAction
+    QStringList ballotItemList(Ballot ballot); // showAction
 //    Ballot newAction();
 //    int createAction(Ballot ballot);
 //    Ballot editAction(QString ballot);

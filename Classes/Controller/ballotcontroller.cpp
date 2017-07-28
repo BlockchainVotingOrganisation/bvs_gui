@@ -10,7 +10,7 @@ BallotController::BallotController()
  * @param ballot
  * @return
  */
-QStringList BallotController::ballotList(Ballot ballot) {
+QStringList BallotController::ballotItemList(Ballot ballot) {
     QStringList items;
 
     if (ballot.getUid().isEmpty() == false) {

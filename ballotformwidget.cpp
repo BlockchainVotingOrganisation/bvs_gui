@@ -52,8 +52,9 @@ BallotFormWidget::BallotFormWidget(QStringList args, QWidget *parent) :
         button->setLayoutDirection(Qt::RightToLeft);
         ui->gridLayout->addWidget(button);
     }
-    ui->listWidget->addItems(controller->ballotList(ballot));
 
+    // Konsolenausgabe!
+    ui->listWidget->addItems(controller->ballotItemList(ballot));
 }
 
 BallotFormWidget::~BallotFormWidget()
