@@ -2,6 +2,7 @@
 #define BALLOTFORMWIDGET_H
 
 #include <QDialog>
+#include "Classes/Domain/Repository/ballotRepository.h"
 
 namespace Ui {
 class BallotFormWidget;
@@ -20,6 +21,8 @@ private:
 
     QStringList args;
     QStringList items;
+
+    Ballot ballot;
 };
 
 #endif // BALLOTFORMWIDGET_H

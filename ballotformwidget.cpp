@@ -38,8 +38,26 @@ BallotFormWidget::BallotFormWidget(QStringList args, QWidget *parent) :
 
     this->setWindowTitle(project);
     BallotRepository *ballotRepository;
-    QJsonDocument ballot = ballotRepository->findBallot(args, project);
-    ui->listWidget->insertItems(9, ballotRepository->findAllOptions(ballot));
+    Ballot ballot;
+    ballot = ballotRepository->findBallot(args, project);
+
+//    if (ballot.getUid > 0) {
+//        ui->listWidget->insertItems(9, ballot.getUid());
+//    }
+
+    if (ballot.getName() != "") {
+        ui->listWidget->addItem(ballot.getName());
+    }
+
+    if (ballot.getText().isEmpty() == false) {
+        ui->listWidget->addItem(ballot.getText());
+    }
+
+    if (ballot.getLogo().isEmpty() == false) {
+        ui->listWidget->addItem(ballot.getLogo());
+    }
+
+//    ui->listWidget->insertItems(9, ballotRepository->findAllOptions(ballot));
 }
 
 BallotFormWidget::~BallotFormWidget()

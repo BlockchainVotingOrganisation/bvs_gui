@@ -7,6 +7,7 @@
 
 #include "ballotrepository.h"
 #include "projectRepository.h"
+#include "Classes/Domain/Model/ballot.h"
 #include "Classes/Service/convert.h"
 
 BallotRepository::BallotRepository()
@@ -14,22 +15,23 @@ BallotRepository::BallotRepository()
 
 }
 
-QJsonDocument BallotRepository::findBallot(QStringList args, QString project) {
+Ballot BallotRepository::findBallot(QStringList args, QString project) {
     ProjectRepository *projectRepository;
-    QStringList items = projectRepository->findAllItems(args, project);
-    QString ballot;
+    QStringList projectItems = projectRepository->findAllItems(args, project);
+    QString ballotStr;
+    Ballot ballot;
 
-    for (int i = 0; i < items.length(); i++) {
-        QString item = items.at(i);
+    for (int i = 0; i < projectItems.length(); i++) {
+        QString item = projectItems.at(i);
         if (item.contains("Ballot")) {
-            QStringList itemArray = items.at(i).split(":");
+            QStringList itemArray = projectItems.at(i).split(":");
             Convert convert;
-            ballot = convert.hex2bin(itemArray[1]);
+            ballotStr = convert.hex2bin(itemArray[1]);
         }
     }
 
     QByteArray stdOut;
-    stdOut = ballot.toLatin1();
+    stdOut = ballotStr.toLatin1();
     QJsonDocument jsonDocument = QJsonDocument::fromJson(stdOut);
 
     if (jsonDocument.isNull())
@@ -37,7 +39,34 @@ QJsonDocument BallotRepository::findBallot(QStringList args, QString project) {
         qDebug() << "JSON is null!";
     }
 
-    return jsonDocument;
+    if (jsonDocument.isObject())
+    {
+        qDebug() << "JSON is object:" << jsonDocument.toJson();
+        QJsonObject ballotObject = jsonDocument.object();
+
+        for (int i = 0; i < ballotObject.keys().count(); i++) {
+            QString key = ballotObject.keys().at(i);
+            QString value = ballotObject.value(key).toString();
+
+            if (key == "uid") {
+                ballot.setUid(value.toInt());
+                qDebug() << "uid" << value;
+            }
+            else if (key == "name") {
+                ballot.setName(value);
+                qDebug() << "name" << value;
+            }
+            else if (key == "logo") {
+                ballot.setLogo(value);
+                qDebug() << "logo" << value;
+            }
+            else if (key == "text") {
+                qDebug() << "text" << value;
+                ballot.setText(value);
+            }
+        }
+    }
+    return ballot;
 }
 
 QStringList BallotRepository::findAllOptions(QJsonDocument ballot) {
