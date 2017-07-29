@@ -22,7 +22,7 @@ public:
     void setText(QString text);
 
     QStringList getOptions();
-    void setOptions(QStringList options);
+    void setOptionsStrList(QStringList options);
 
 private:
 

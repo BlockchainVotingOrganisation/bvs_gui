@@ -42,7 +42,7 @@ QStringList Ballot::getOptions() {
     return this->options;
 }
 
-void Ballot::setOptions(QStringList options) {
+void Ballot::setOptionsStrList(QStringList options) {
     this->options = options;
 }
 

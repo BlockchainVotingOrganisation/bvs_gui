@@ -67,7 +67,7 @@ Ballot BallotRepository::findBallot(QStringList args, QString project) {
                 ballot.setText(value);
             }
             if (key == "options") {
-                QStringList options;
+                QStringList optionsStrList;
                 QJsonObject myOptions = ballotObject.value(key).toObject();
                 for (int j = 0; j < myOptions.keys().count(); j++) {
 //                    qDebug() << "option" << j << myOptions.keys().at(j) << ":" <<  myOptions.value(myOptions.keys().at(j));
@@ -78,7 +78,7 @@ Ballot BallotRepository::findBallot(QStringList args, QString project) {
                     qDebug() << "\n\noption" << j << " " << myvalue;
                     for (int k = 0; k < option.keys().count(); k++) {
                         qDebug()  << "data:" << option.keys().at(k) << ":" << option.value(option.keys().at(k));
-
+//                        string = QString::number(j) + " ";
                         if (option.keys().at(k) == "name") {
                             QJsonValue key = option.value(option.keys().at(k));
                             string = string + key.toString();
@@ -91,9 +91,12 @@ Ballot BallotRepository::findBallot(QStringList args, QString project) {
                         string.append(" ");
 
                     }
-                    options.append(string);
+                    optionsStrList.append(string);
                 }
-                ballot.setOptions(options);
+
+                ballot.setOptionsStrList(optionsStrList);
+
+                //ballot.setOptions
             }
         }
     }

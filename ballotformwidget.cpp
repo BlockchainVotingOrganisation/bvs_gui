@@ -1,11 +1,16 @@
 #include <QDebug>
 #include <QString>
+#include <QStringList>
 #include <QJsonDocument>
 #include <QProcess>
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QRadioButton>
+#include <QList>
+#include <QPushButton>
+#include <QVBoxLayout>
 
+#include "Ressources/Private/GUI/confirm.h"
 #include "ballotformwidget.h"
 #include "ui_ballotformwidget.h"
 
@@ -40,22 +45,27 @@ BallotFormWidget::BallotFormWidget(QStringList args, QWidget *parent) :
         }
     }
     this->setWindowTitle(project);
-    BallotRepository *ballotRepository;
+    BallotRepository *ballotRepository; //  soll  BallotController *controller;
     Ballot ballot;
-    ballot = ballotRepository->findBallot(args, project);
-    BallotController *controller;
+    ballot = ballotRepository->findBallot(args, project); // soll  BallotController *controller showAction
+
     ui->labelBallonName->setText(ballot.getName());
     ui->textBrowser->setText(ballot.getText());
+
+//    /*buttongroup*/ = new QButtonGroup(this);
 
     for (int i = 0; i < ballot.getOptions().length(); i++) {
         QRadioButton *button = new QRadioButton(ballot.getOptions().at(i), this);
         button->setLayoutDirection(Qt::RightToLeft);
         button->setStyleSheet("font-size: 20px;");
-//        QAction action;
-//        button->addAction(action);
+        button->setProperty("name", ballot.getOptions().at(i));
 
+
+        this->buttonGroup.addButton(button);
         ui->gridLayout->addWidget(button);
     }
+
+
 
     // Konsolenausgabe!
 //    ui->listWidget->addItems(controller->ballotItemList(ballot));
@@ -69,5 +79,26 @@ BallotFormWidget::~BallotFormWidget()
 
 void BallotFormWidget::on_buttonBox_accepted()
 {
+//    qDebug() << "Buttons müssen in buttonGroup, damit sie beim Beenden abgefragt werden können.";
+
+
+
+
+//    connect(ok, SIGNAL(clicked()), confirm, SLOT(show()));
+    QStringList myresults;
+
+    for (int i = 0; i < this->buttonGroup.buttons().count(); i++) {
+        qDebug() << i << " " << this->buttonGroup.buttons().at(i)->isChecked() << " " << this->buttonGroup.buttons().at(i)->text().trimmed();
+        myresults.append(this->buttonGroup.buttons().at(i)->text().trimmed() + " " + QString::number(this->buttonGroup.buttons().at(i)->isChecked()));
+
+//        bool ok = this->buttonGroup.buttons().at(i)->isChecked();
+//        textlist.append(this->buttonGroup.buttons().at(i)->text().trimmed());
+//        textlist.append(text + QString::number(ok));
+    }
+    Confirm *confirm = new Confirm(myresults);
+    confirm->show();
+
 
 }
+
+
