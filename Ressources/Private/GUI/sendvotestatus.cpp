@@ -32,7 +32,7 @@ SendVoteStatus::SendVoteStatus(QString sendAdress, QString voting, QWidget *pare
     arguments.append(blockchain);
     arguments.append("sendwithmetadata");
     arguments.append(sendAdress);
-    arguments.append("0.00000010");
+    arguments.append("0");
     arguments.append(convert.bin2hex(voting.trimmed()));
 
     ui->listWidget->addItem("SEND VOTE...");
