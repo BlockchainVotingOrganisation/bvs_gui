@@ -13,12 +13,13 @@
  * @param args
  * @param parent
  */
-BVS_Wallet::BVS_Wallet(QStringList args, QWidget *parent) :
+BVS_Wallet::BVS_Wallet(QWidget *parent) :
   QMainWindow(parent),
   ui(new Ui::BVS_Wallet),
   node(new Node)
 {
     ui->setupUi(this);
+    QStringList args = QCoreApplication::arguments();
     this->args = args;
 
 //    QString  arg[Args.length()];
@@ -69,7 +70,7 @@ BVS_Wallet::~BVS_Wallet()
  */
 void BVS_Wallet::on_action_Ausf_hren_triggered()
 {
-  AusfuehrenDialog *a = new AusfuehrenDialog(args);
+  AusfuehrenDialog *a = new AusfuehrenDialog();
 
   a->show();
 }
@@ -135,7 +136,7 @@ void BVS_Wallet::on_action_Stimmzettel_triggered()
  * @brief BVS_Wallet::projectOpen
  */
 void BVS_Wallet::projectOpen() {
-    ProjekteAuswahl *p = new ProjekteAuswahl(this->args);
+    ProjekteAuswahl *p = new ProjekteAuswahl();
     p->show();
 
     QString blockchain;

@@ -24,7 +24,7 @@ class BVS_Wallet : public QMainWindow
   Q_OBJECT
 
 public:
-  explicit BVS_Wallet(QStringList args, QWidget *parent = 0);
+  explicit BVS_Wallet(QWidget *parent = 0);
   ~BVS_Wallet();
 
   Node *node;

@@ -6,11 +6,12 @@
 #include <QProcess>
 #include <qdebug.h>
 
-AusfuehrenDialog::AusfuehrenDialog(QStringList args, QWidget *parent) :
+AusfuehrenDialog::AusfuehrenDialog(QWidget *parent) :
   QDialog(parent),
   ui(new Ui::AusfuehrenDialog)
 {
-  ui->setupUi(this);//    QRegularExpression regex("\\[|\\]");
+    ui->setupUi(this);//    QRegularExpression regex("\\[|\\]");
+    QStringList args = QCoreApplication::arguments();
     this->args = args;
 }
 

@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv); // ->this process
     QStringList args = app.arguments(); // ->console cmd args
-    BVS_Wallet b(args); // ->GUI MainWindow
+    BVS_Wallet b; // ->GUI MainWindow
     QString cmd, blockchain, server, port, path;
     bool multichain = false;
 

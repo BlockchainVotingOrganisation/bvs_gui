@@ -6,13 +6,13 @@
 #include <qdebug.h>
 #include <QJsonArray>
 
-ProjekteAuswahl::ProjekteAuswahl(QStringList args, QWidget *parent) :
+ProjekteAuswahl::ProjekteAuswahl(QWidget *parent) :
   QDialog(parent),
   ui(new Ui::ProjekteAuswahl)
 {
     ui->setupUi(this);
     QString blockchain;
-
+    QStringList args = QCoreApplication::arguments();
     for(int i = 0; i < args.length(); i++) {
         QStringList argBlockchain= args.at(i).split("=");
         if (argBlockchain[0] == "-blockchain") {
