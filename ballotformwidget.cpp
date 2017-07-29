@@ -16,7 +16,7 @@
 
 #include "Classes/Controller/projectController.h"
 #include "Classes/Domain/Repository/projectRepository.h"
-#include "Classes/Domain/Repository/ballotRepository.h"
+#include "Classes/Domain/Repository/ballotrepository.h"
 #include "Classes/Service/convert.h"
 #include "Classes/Domain/Model/ballot.h"
 #include "Classes/Controller/ballotcontroller.h"
