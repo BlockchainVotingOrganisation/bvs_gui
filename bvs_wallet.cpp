@@ -43,16 +43,9 @@ BVS_Wallet::BVS_Wallet(QWidget *parent) :
 //            qDebug() << "args[" << i << "] = " << args.at(i) << "";
             this->setWindowTitle(argBlockchain[1]);
             ui->label->setText(argBlockchain[1]);
-
-            ui->label->setText(project);
             ui->listWidget->clear();
             ui->listWidget->addItems(repository->findAllItems(args, argBlockchain[1]));
 
-//            QStringList items;
-//            items = repository->findAllItems(args, argBlockchain[1]);
-//            if (items.length() > 0) {
-//                ui->listWidget->addItems(items);
-//            }
         }
     }
 }
