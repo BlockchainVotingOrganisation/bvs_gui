@@ -24,7 +24,9 @@ SOURCES += \
     Classes/Domain/Model/option.cpp \
     Classes/Domain/Repository/optionrepository.cpp \
     Ressources/Private/GUI/confirm.cpp \
-    Ressources/Private/GUI/sendvotestatus.cpp
+    Ressources/Private/GUI/sendvotestatus.cpp \
+    Classes/Domain/Model/wallet.cpp \
+    Classes/Domain/Model/address.cpp
 
 HEADERS += \
     bvs_wallet.h \
@@ -46,7 +48,9 @@ HEADERS += \
     Classes/Domain/Model/option.h \
     Classes/Domain/Repository/optionrepository.h \
     Ressources/Private/GUI/confirm.h \
-    Ressources/Private/GUI/sendvotestatus.h
+    Ressources/Private/GUI/sendvotestatus.h \
+    Classes/Domain/Model/wallet.h \
+    Classes/Domain/Model/address.h
 
 FORMS += \
     bvs_wallet.ui \

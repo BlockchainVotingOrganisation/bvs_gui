@@ -19,11 +19,9 @@ SendVoteStatus::SendVoteStatus(QString sendAdress, QString voting, QWidget *pare
 
         if (args[i].contains("blockchain=") == true) {
             blockchain = argBlockchain[1];
-//            qDebug() << "BC:" << blockchain;
         }
         else if (args[i].contains("path=") == true) {
             path = argBlockchain[1];
-//            qDebug() << "path" << path;
         }
     }
 
@@ -53,8 +51,6 @@ SendVoteStatus::SendVoteStatus(QString sendAdress, QString voting, QWidget *pare
     ui->listWidget->addItem("RESULT:");
     ui->listWidget->addItem(out.trimmed());
     ui->progressBar->setValue(100);
-//    ui->plainTextEdit->appendPlainText(out);
-
 }
 
 SendVoteStatus::~SendVoteStatus()
