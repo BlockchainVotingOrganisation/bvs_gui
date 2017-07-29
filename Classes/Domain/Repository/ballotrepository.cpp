@@ -66,6 +66,11 @@ Ballot BallotRepository::findBallot(QStringList args, QString project) {
 //                qDebug() << "text" << value;
                 ballot.setText(value);
             }
+            if (key == "walletaddress") {
+//                qDebug() << "text" << value;
+                ballot.setWalletAddress(value);
+            }
+
             if (key == "options") {
                 QStringList optionsStrList;
 

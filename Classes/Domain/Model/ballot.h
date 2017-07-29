@@ -21,6 +21,9 @@ public:
     QString getText();
     void setText(QString text);
 
+    QString getWalletAddress();
+    void setWalletAddress(QString walletAdress);
+
     QStringList getOptions();
     void setOptionsStrList(QStringList options);
 
@@ -30,6 +33,7 @@ private:
     QString name;
     QString logo;
     QString text;
+    QString walletAddress;
     QStringList options;
 };
 

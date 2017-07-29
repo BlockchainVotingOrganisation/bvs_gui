@@ -46,8 +46,10 @@ BallotFormWidget::BallotFormWidget(QStringList args, QWidget *parent) :
     }
     this->setWindowTitle(project);
     BallotRepository *ballotRepository; //  soll  BallotController *controller;
-    Ballot ballot;
+
+    Ballot ballot = this->ballot;
     ballot = ballotRepository->findBallot(args, project); // soll  BallotController *controller showAction
+    this->ballot = ballot;
 
     ui->labelBallonName->setText(ballot.getName());
     ui->textBrowser->setText(ballot.getText());
@@ -86,6 +88,7 @@ void BallotFormWidget::on_buttonBox_accepted()
 //        qDebug() << i << " " << this->buttonGroup.buttons().at(i)->isChecked() << " " << this->buttonGroup.buttons().at(i)->text().trimmed();
         myresults.append(this->buttonGroup.buttons().at(i)->text().trimmed() + " " + QString::number(this->buttonGroup.buttons().at(i)->isChecked()));
     }
-    Confirm *confirm = new Confirm(myresults);
+
+    Confirm *confirm = new Confirm(this->ballot.getWalletAddress(), myresults);
     confirm->show();
 }

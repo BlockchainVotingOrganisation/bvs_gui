@@ -14,3 +14,6 @@ QString Convert::hex2bin(QString hexStr) {
     return binStr;
 }
 
+QString Convert::bin2hex(QString binStr) {
+    return binStr.toLatin1().toHex();
+}

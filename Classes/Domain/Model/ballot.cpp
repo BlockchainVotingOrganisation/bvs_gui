@@ -38,6 +38,14 @@ void Ballot::setText(QString text) {
     this->text = text;
 }
 
+QString Ballot::getWalletAddress() {
+    return this->walletAddress;
+}
+
+void Ballot::setWalletAddress(QString walletAdress) {
+    this->walletAddress = walletAdress;
+}
+
 QStringList Ballot::getOptions() {
     return this->options;
 }

@@ -12,7 +12,7 @@ class SendVoteStatus : public QWidget
     Q_OBJECT
 
 public:
-    explicit SendVoteStatus(QWidget *parent = 0);
+    explicit SendVoteStatus(QString sendAdress, QString voting, QWidget *parent = 0);
     ~SendVoteStatus();
 
 private:
