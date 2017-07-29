@@ -23,7 +23,8 @@ SOURCES += \
     Classes/Domain/Model/ballot.cpp \
     Classes/Domain/Model/option.cpp \
     Classes/Domain/Repository/optionrepository.cpp \
-    Ressources/Private/GUI/confirm.cpp
+    Ressources/Private/GUI/confirm.cpp \
+    Ressources/Private/GUI/sendvotestatus.cpp
 
 HEADERS += \
     bvs_wallet.h \
@@ -44,7 +45,8 @@ HEADERS += \
     Classes/Domain/Model/ballot.h \
     Classes/Domain/Model/option.h \
     Classes/Domain/Repository/optionrepository.h \
-    Ressources/Private/GUI/confirm.h
+    Ressources/Private/GUI/confirm.h \
+    Ressources/Private/GUI/sendvotestatus.h
 
 FORMS += \
     bvs_wallet.ui \
@@ -52,7 +54,8 @@ FORMS += \
     projekteauswahl.ui \
     settingsdialog.ui \
     ballotformwidget.ui \
-    Ressources/Private/GUI/confirm.ui
+    Ressources/Private/GUI/confirm.ui \
+    Ressources/Private/GUI/sendvotestatus.ui
 
 RESOURCES += \
     terminal.qrc

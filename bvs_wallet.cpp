@@ -116,10 +116,10 @@ void BVS_Wallet::closeEvent()
 //    for(int i = 0; i < this->args.length(); i++) {
 //         qDebug() << this->args.at(i);
 //    }
-////    qDebug() << "Anwendung beenden - Blockchain: ";
+
 //    NodeController nc;
 //    int i = nc.stopDaemon(args);
-//    qDebug() << "Anwendung beenden Status:" << i;
+    qDebug() << "Anwendung beenden.";
 }
 
 /**

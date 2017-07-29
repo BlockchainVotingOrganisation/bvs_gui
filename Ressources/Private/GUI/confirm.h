@@ -2,6 +2,7 @@
 #define CONFIRM_H
 
 #include <QDialog>
+#include "Ressources/Private/GUI/sendvotestatus.h"
 
 namespace Ui {
 class Confirm;
@@ -15,8 +16,12 @@ public:
     explicit Confirm(QStringList results, QWidget *parent = 0);
     ~Confirm();
 
+private slots:
+    void on_buttonBox_accepted();
+
 private:
     Ui::Confirm *ui;
+    SendVoteStatus *status;
 
 };
 

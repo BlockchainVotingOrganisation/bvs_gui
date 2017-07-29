@@ -8,6 +8,7 @@
 #include "ballotrepository.h"
 #include "projectRepository.h"
 #include "Classes/Domain/Model/ballot.h"
+#include "Classes/Domain/Model/option.h"
 #include "Classes/Service/convert.h"
 
 BallotRepository::BallotRepository()
@@ -41,55 +42,65 @@ Ballot BallotRepository::findBallot(QStringList args, QString project) {
 
     if (jsonDocument.isObject())
     {
-        qDebug() << "JSON is object:" << jsonDocument.toJson();
+//        qDebug() << "JSON is object:" << jsonDocument.toJson();
         QJsonObject ballotObject = jsonDocument.object();
 
         for (int i = 0; i < ballotObject.keys().count(); i++) {
             QString key = ballotObject.keys().at(i);
             QString value = ballotObject.value(key).toString();
 
-
             if (key == "uid") {
                 QString valueStr = value.setNum(value.toInt());
                 ballot.setUid(valueStr);
-                qDebug() << "uid" << value.toInt();
+//                qDebug() << "uid" << value.toInt();
             }
             if (key == "name") {
                 ballot.setName(value);
-                qDebug() << "name" << value;
+//                qDebug() << "name" << value;
             }
             if (key == "logo") {
                 ballot.setLogo(value);
-                qDebug() << "logo" << value;
+//                qDebug() << "logo" << value;
             }
             if (key == "text") {
-                qDebug() << "text" << value;
+//                qDebug() << "text" << value;
                 ballot.setText(value);
             }
             if (key == "options") {
                 QStringList optionsStrList;
+
+                QList<Option> options;
+
                 QJsonObject myOptions = ballotObject.value(key).toObject();
                 for (int j = 0; j < myOptions.keys().count(); j++) {
+
 //                    qDebug() << "option" << j << myOptions.keys().at(j) << ":" <<  myOptions.value(myOptions.keys().at(j));
-                    QByteArray myvalue;
+
+                    QByteArray myvalue = myOptions.value(myOptions.keys().at(j)).toString().replace("\\\\\\","\\\\").toLatin1();
+//                    qDebug() << "\n\noption" << j << " " << myvalue;
+                    QJsonObject optionJsonObj = QJsonDocument::fromJson(myvalue).object();
+
+
                     QString string;
-                    myvalue = myOptions.value(myOptions.keys().at(j)).toString().replace("\\\\\\","\\\\").toLatin1();
-                    QJsonObject option = QJsonDocument::fromJson(myvalue).object();
-                    qDebug() << "\n\noption" << j << " " << myvalue;
-                    for (int k = 0; k < option.keys().count(); k++) {
-                        qDebug()  << "data:" << option.keys().at(k) << ":" << option.value(option.keys().at(k));
-//                        string = QString::number(j) + " ";
-                        if (option.keys().at(k) == "name") {
-                            QJsonValue key = option.value(option.keys().at(k));
-                            string = string + key.toString();
+                    for (int k = 0; k < optionJsonObj.keys().count(); k++) {
+
+                        Option option;
+
+//                        qDebug()  << "data:" << optionJsonObj.keys().at(k) << ":" << optionJsonObj.value(optionJsonObj.keys().at(k));
+                        if (optionJsonObj.keys().at(k) == "name") {
+                            QJsonValue optionValue = optionJsonObj.value(optionJsonObj.keys().at(k));
+                            string = string + optionValue.toString();
+                            option.setName(optionValue.toString());
+//                            qDebug() << option.getName();
                         }
-//                        else if (option.keys().at(k) == "walletaddress") {
-//                            QJsonValue value = option.value(option.keys().at(k));
-//                            string = string + " " + value.toString();
-//                        }
+                        else if (optionJsonObj.keys().at(k) == "walletaddress") {
+                            QJsonValue optionValue = optionJsonObj.value(optionJsonObj.keys().at(k));
+                            option.setWalletAddress(optionValue.toString());
+//                            qDebug() << option.getWalletAddress();
+                        }
 
+                        options.append(option);
                         string.append(" ");
-
                     }
                     optionsStrList.append(string);
                 }
@@ -102,6 +113,3 @@ Ballot BallotRepository::findBallot(QStringList args, QString project) {
     }
     return ballot;
 }
-
-
-

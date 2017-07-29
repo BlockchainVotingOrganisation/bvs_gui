@@ -1,6 +1,7 @@
 #include "confirm.h"
 #include "ui_confirm.h"
 
+
 Confirm::Confirm(QStringList results, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Confirm)
@@ -16,4 +17,11 @@ Confirm::Confirm(QStringList results, QWidget *parent) :
 Confirm::~Confirm()
 {
     delete ui;
+}
+
+void Confirm::on_buttonBox_accepted()
+{
+
+    SendVoteStatus *status = new SendVoteStatus;
+    status->show();
 }

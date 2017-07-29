@@ -65,8 +65,6 @@ BallotFormWidget::BallotFormWidget(QStringList args, QWidget *parent) :
         ui->gridLayout->addWidget(button);
     }
 
-
-
     // Konsolenausgabe!
 //    ui->listWidget->addItems(controller->ballotItemList(ballot));
 }
@@ -80,25 +78,14 @@ BallotFormWidget::~BallotFormWidget()
 void BallotFormWidget::on_buttonBox_accepted()
 {
 //    qDebug() << "Buttons müssen in buttonGroup, damit sie beim Beenden abgefragt werden können.";
-
-
-
-
 //    connect(ok, SIGNAL(clicked()), confirm, SLOT(show()));
+
     QStringList myresults;
 
     for (int i = 0; i < this->buttonGroup.buttons().count(); i++) {
-        qDebug() << i << " " << this->buttonGroup.buttons().at(i)->isChecked() << " " << this->buttonGroup.buttons().at(i)->text().trimmed();
+//        qDebug() << i << " " << this->buttonGroup.buttons().at(i)->isChecked() << " " << this->buttonGroup.buttons().at(i)->text().trimmed();
         myresults.append(this->buttonGroup.buttons().at(i)->text().trimmed() + " " + QString::number(this->buttonGroup.buttons().at(i)->isChecked()));
-
-//        bool ok = this->buttonGroup.buttons().at(i)->isChecked();
-//        textlist.append(this->buttonGroup.buttons().at(i)->text().trimmed());
-//        textlist.append(text + QString::number(ok));
     }
     Confirm *confirm = new Confirm(myresults);
     confirm->show();
-
-
 }
-
-
