@@ -7,7 +7,6 @@
 #include <QDebug>
 #include <QCloseEvent>
 
-
 /**
  * @brief BVS_Wallet::BVS_Wallet
  * @param args
@@ -22,7 +21,6 @@ BVS_Wallet::BVS_Wallet(QWidget *parent) :
     QStringList args = QCoreApplication::arguments();
     this->args = args;
 
-//    QString  arg[Args.length()];
     QString blockchain;
 
     for(int i = 0; i < args.length(); i++) {
@@ -43,16 +41,8 @@ BVS_Wallet::BVS_Wallet(QWidget *parent) :
 //            qDebug() << "args[" << i << "] = " << args.at(i) << "";
             this->setWindowTitle(argBlockchain[1]);
             ui->label->setText(argBlockchain[1]);
-
-            ui->label->setText(project);
             ui->listWidget->clear();
             ui->listWidget->addItems(repository->findAllItems(args, argBlockchain[1]));
-
-//            QStringList items;
-//            items = repository->findAllItems(args, argBlockchain[1]);
-//            if (items.length() > 0) {
-//                ui->listWidget->addItems(items);
-//            }
         }
     }
 }
