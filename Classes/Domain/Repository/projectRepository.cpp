@@ -83,7 +83,6 @@ QStringList ProjectRepository::findAllItems(QStringList args, QString project) {
     QByteArray stdOut;
     QString blockchain, path;
 
-
     for(int i = 0; i < args.length(); i++) {
         QString arg = args[i];
         QStringList argBlockchain= args.at(i).split("=");
