@@ -4,7 +4,7 @@
 #include <QDialog>
 #include <QRadioButton>
 #include <QButtonGroup>
-#include "Classes/Domain/Repository/ballotRepository.h"
+#include "Classes/Domain/Repository/ballotrepository.h"
 
 namespace Ui {
 class BallotFormWidget;
