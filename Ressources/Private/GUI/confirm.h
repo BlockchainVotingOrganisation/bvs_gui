@@ -13,7 +13,7 @@ class Confirm : public QDialog
     Q_OBJECT
 
 public:
-    explicit Confirm(QStringList results, QWidget *parent = 0);
+    explicit Confirm(QString sendAddress, QStringList results, QWidget *parent = 0);
     ~Confirm();
 
 private slots:
@@ -22,6 +22,7 @@ private slots:
 private:
     Ui::Confirm *ui;
     SendVoteStatus *status;
+    QString sendAddress;
 
 };
 

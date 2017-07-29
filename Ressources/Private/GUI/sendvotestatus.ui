@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>484</width>
+    <height>661</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -52,9 +52,15 @@
     <rect>
      <x>20</x>
      <y>130</y>
-     <width>361</width>
-     <height>161</height>
+     <width>441</width>
+     <height>521</height>
     </rect>
+   </property>
+   <property name="resizeMode">
+    <enum>QListView::Adjust</enum>
+   </property>
+   <property name="layoutMode">
+    <enum>QListView::Batched</enum>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
