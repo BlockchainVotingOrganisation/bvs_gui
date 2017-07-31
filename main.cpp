@@ -71,9 +71,9 @@ int main(int argc, char *argv[])
     bool multichain = false;
 
 
-//    qDebug() << "argc = " << argc;
+    qDebug() << "argc = " << argc;
     for(int i = 0; i < argc; i++) {
-//        qDebug() << "argv[" << i << "] = " << argv[i] << "\n";
+        qDebug() << "argv[" << i << "] = " << argv[i] << "\n";
         QString arg = args[i];
         if (arg == "--with-multichain") {
             multichain = true;

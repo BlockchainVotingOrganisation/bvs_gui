@@ -1,10 +1,6 @@
 #include "projekteauswahl.h"
 #include "ui_projekteauswahl.h"
-#include "QJsonDocument"
-#include <QJsonObject>
-#include <QProcess>
 #include <qdebug.h>
-#include <QJsonArray>
 
 ProjekteAuswahl::ProjekteAuswahl(QWidget *parent) :
   QDialog(parent),
@@ -42,6 +38,5 @@ QString ProjekteAuswahl::getProject() {
 
 QString ProjekteAuswahl::on_projectListe_itemSelectionChanged()
 {
-//    qDebug() << "Lade Stream" << ui->projectListe->selectedItems().at(0)->text() + ".";
     return ui->projectListe->selectedItems().at(0)->text();
 }
